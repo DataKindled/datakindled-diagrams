@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Snowflake AI Data Cloud — DataKindled</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.11.0/dist/tabler-icons.min.css">
 <style>
 body{margin:0;padding:24px;background:#FAFAF8;font-family:sans-serif;display:flex;justify-content:center;align-items:flex-start}
 *{box-sizing:border-box;margin:0;padding:0}
@@ -102,8 +102,8 @@ body{margin:0;padding:24px;background:#FAFAF8;font-family:sans-serif;display:fle
           <div class="tooltip tooltip-down">Hybrid tables enable low-latency transactional workloads alongside analytical queries in the same Snowflake environment.</div>
         </div>
         <div class="tip-wrap">
-          <div class="chip chip-amber"><i class="ti ti-sparkles"></i>AI</div>
-          <div class="tooltip tooltip-down">Cortex AI provides generative AI and ML capabilities built directly into the platform — applied to data without moving it.</div>
+          <div class="chip chip-amber"><i class="ti ti-sparkles"></i>AI &amp; Cortex</div>
+          <div class="tooltip tooltip-down">Cortex AI — LLMs including Snowflake Arctic, Cortex Analyst for natural language querying, Cortex Search, Document AI, Snowflake Copilot, and ML functions. All built into the platform.</div>
         </div>
         <div class="tip-wrap">
           <div class="chip chip-amber"><i class="ti ti-apps"></i>Applications &amp; collaboration</div>
@@ -165,10 +165,6 @@ body{margin:0;padding:24px;background:#FAFAF8;font-family:sans-serif;display:fle
           <div class="chip chip-coral"><i class="ti ti-bolt"></i>Apache Spark</div>
           <div class="tooltip tooltip-up">The Snowflake Spark connector allows Spark workloads to read from and write to Snowflake storage using Spark's execution engine.</div>
         </div>
-        <div class="tip-wrap">
-          <div class="chip chip-coral"><i class="ti ti-box"></i>Containers</div>
-          <div class="tooltip tooltip-up">Snowpark Container Services runs containerized workloads — including custom ML models and applications — inside Snowflake's infrastructure.</div>
-        </div>
       </div>
       <div class="layer-title mt8">Compute resources</div>
       <div class="chips">
@@ -179,6 +175,10 @@ body{margin:0;padding:24px;background:#FAFAF8;font-family:sans-serif;display:fle
         <div class="tip-wrap">
           <div class="chip chip-gray"><i class="ti ti-cpu-2"></i>GPU</div>
           <div class="tooltip tooltip-up">GPU-accelerated compute for machine learning model training, LLM inference, and compute-intensive AI workloads via Snowpark Container Services.</div>
+        </div>
+        <div class="tip-wrap">
+          <div class="chip chip-gray"><i class="ti ti-box"></i>Containers</div>
+          <div class="tooltip tooltip-up">Snowpark Container Services runs containerized workloads — including custom ML models and applications — inside Snowflake's infrastructure.</div>
         </div>
       </div>
     </div>
@@ -211,7 +211,7 @@ body{margin:0;padding:24px;background:#FAFAF8;font-family:sans-serif;display:fle
         </div>
         <div class="tip-wrap">
           <div class="chip chip-teal"><i class="ti ti-file-code"></i>Semi-structured</div>
-          <div class="tooltip tooltip-up">JSON, Parquet, Avro, ORC, and XML stored natively in Snowflake's VARIANT type — queryable without flattening the structure.</div>
+          <div class="tooltip tooltip-up">JSON, Parquet, Avro, ORC, and XML stored natively in Snowflake's VARIANT type — queryable without flattening the structure. XML reached GA in March 2025.</div>
         </div>
         <div class="tip-wrap">
           <div class="chip chip-teal"><i class="ti ti-table"></i>Structured</div>
@@ -232,6 +232,22 @@ body{margin:0;padding:24px;background:#FAFAF8;font-family:sans-serif;display:fle
         <div class="tip-wrap">
           <div class="chip chip-teal"><i class="ti ti-elephant"></i>Snowflake Postgres</div>
           <div class="tooltip tooltip-up">PostgreSQL-compatible interface for Snowflake — allowing Postgres-native applications and tools to connect directly to Snowflake.</div>
+        </div>
+      </div>
+      <div class="layer-title mt8">AI &amp; open formats</div>
+      <div class="chips">
+          <div class="tip-wrap">
+            <div class="chip chip-teal"><i class="ti ti-brand-open-source"></i>VECTOR</div>
+            <div class="tooltip tooltip-up">Fixed-size numeric arrays for AI and ML — stores embedding vectors up to 4096 dimensions for similarity search and retrieval-augmented generation. GA 2024.</div>
+          </div>
+          <div class="tip-wrap">
+            <div class="chip chip-teal"><i class="ti ti-versions"></i>Delta Lake</div>
+            <div class="tooltip tooltip-up">Open table format sharing — Delta Lake data in external cloud storage shared across regions and clouds without ETL pipelines, alongside Apache Iceberg.</div>
+          </div>
+          <div class="tip-wrap">
+            <div class="chip chip-teal"><i class="ti ti-books"></i>Polaris Catalog</div>
+            <div class="tooltip tooltip-up">Open source Apache Iceberg catalog based on an open REST API — enabling interoperability across Spark, Trino, Flink, DuckDB, and other compute engines.</div>
+          </div>
         </div>
       </div>
     </div>
