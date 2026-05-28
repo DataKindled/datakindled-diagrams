@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snowflake AI Data Cloud Architecture — DataKindled</title>
+<style>
+body{margin:0;padding:16px;background:#FAFAF8;font-family:sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+svg{width:100%;display:block}
+</style>
+</head>
+<body>
+<svg viewBox="0 0 680 890" role="img" aria-label="Snowflake AI Data Cloud architectural cross-section showing five independent floors">
+
+<defs>
+  <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+    <path d="M2 2L8 5L2 8" fill="none" stroke="#888780" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+
+<!-- GROUND LINE -->
+<line x1="118" y1="790" x2="582" y2="790" stroke="#444441" stroke-width="1.5" stroke-linecap="round"/>
+<text x="350" y="810" text-anchor="middle" fill="#888780" font-family="sans-serif" font-size="12">Cloud infrastructure — AWS · Azure · Google Cloud</text>
+
+<!-- ══ FLOOR 1 — INTEROPERABLE STORAGE  y=654  h=130 ══ -->
+<rect x="118" y="654" width="464" height="130" rx="0" fill="#E6F1FB" stroke="#85B7EB" stroke-width="0.5"/>
+<line x1="118" y1="654" x2="582" y2="654" stroke="#85B7EB" stroke-width="0.5" opacity="0.4"/>
+<text x="148" y="674" dominant-baseline="central" fill="#0C447C" font-family="sans-serif" font-size="14" font-weight="500">Interoperable storage</text>
+<text x="148" y="694" dominant-baseline="central" fill="#185FA5" font-family="sans-serif" font-size="12">Structured · semi-structured · unstructured · columnar · AES-256 encrypted</text>
+<!-- chip row 1 -->
+<rect x="148" y="708" width="36"  height="22" rx="4" fill="none" stroke="#85B7EB" stroke-width="0.5" opacity="0.7"/>
+<text x="166"  y="719" text-anchor="middle" dominant-baseline="central" fill="#0C447C" font-family="sans-serif" font-size="12">S3</text>
+<rect x="192" y="708" width="72"  height="22" rx="4" fill="none" stroke="#85B7EB" stroke-width="0.5" opacity="0.7"/>
+<text x="228"  y="719" text-anchor="middle" dominant-baseline="central" fill="#0C447C" font-family="sans-serif" font-size="12">Azure Blob</text>
+<rect x="272" y="708" width="40"  height="22" rx="4" fill="none" stroke="#85B7EB" stroke-width="0.5" opacity="0.7"/>
+<text x="292"  y="719" text-anchor="middle" dominant-baseline="central" fill="#0C447C" font-family="sans-serif" font-size="12">GCS</text>
+<rect x="320" y="708" width="92"  height="22" rx="4" fill="none" stroke="#85B7EB" stroke-width="0.5" opacity="0.7"/>
+<text x="366"  y="719" text-anchor="middle" dominant-baseline="central" fill="#0C447C" font-family="sans-serif" font-size="12">Apache Iceberg</text>
+<rect x="420" y="708" width="116" height="22" rx="4" fill="none" stroke="#85B7EB" stroke-width="0.5" opacity="0.7"/>
+<text x="478"  y="719" text-anchor="middle" dominant-baseline="central" fill="#0C447C" font-family="sans-serif" font-size="12">Snowflake tables</text>
+<!-- chip row 2 -->
+<rect x="148" y="738" width="80"  height="22" rx="4" fill="none" stroke="#85B7EB" stroke-width="0.5" opacity="0.7"/>
+<text x="188"  y="749" text-anchor="middle" dominant-baseline="central" fill="#0C447C" font-family="sans-serif" font-size="12">Hybrid tables</text>
+<rect x="236" y="738" width="108" height="22" rx="4" fill="none" stroke="#85B7EB" stroke-width="0.5" opacity="0.7"/>
+<text x="290"  y="749" text-anchor="middle" dominant-baseline="central" fill="#0C447C" font-family="sans-serif" font-size="12">Snowflake Postgres</text>
+<rect x="352" y="738" width="56"  height="22" rx="4" fill="none" stroke="#85B7EB" stroke-width="0.5" opacity="0.7"/>
+<text x="380"  y="749" text-anchor="middle" dominant-baseline="central" fill="#0C447C" font-family="sans-serif" font-size="12">VECTOR</text>
+<!-- floor number -->
+<rect x="78" y="706" width="34" height="22" rx="4" fill="#FAFAF8" stroke="#D3D1C7" stroke-width="0.5"/>
+<text x="95" y="717" text-anchor="middle" dominant-baseline="central" fill="#888780" font-family="sans-serif" font-size="12">01</text>
+
+<!-- CONNECTOR 1→2  mid=638 -->
+<line x1="350" y1="627" x2="350" y2="649" stroke="#888780" stroke-width="0.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+<rect x="282" y="629" width="136" height="16" rx="3" fill="#FAFAF8"/>
+<text x="350" y="638" text-anchor="middle" dominant-baseline="central" fill="#888780" font-family="sans-serif" font-size="9" letter-spacing="1.5">INDEPENDENT</text>
+
+<!-- ══ FLOOR 2 — ELASTIC COMPUTE  y=492  h=130 ══ -->
+<rect x="118" y="492" width="464" height="130" rx="0" fill="#FAECE7" stroke="#F0997B" stroke-width="0.5"/>
+<line x1="118" y1="492" x2="582" y2="492" stroke="#F0997B" stroke-width="0.5" opacity="0.4"/>
+<text x="148" y="512" dominant-baseline="central" fill="#712B13" font-family="sans-serif" font-size="14" font-weight="500">Elastic compute</text>
+<text x="148" y="532" dominant-baseline="central" fill="#993C1D" font-family="sans-serif" font-size="12">Virtual warehouses · MPP clusters · scale up or out · pay only when running</text>
+<!-- languages row -->
+<text x="148" y="557" dominant-baseline="central" fill="#993C1D" font-family="sans-serif" font-size="11" opacity="0.6">Languages</text>
+<rect x="214" y="546" width="40"  height="22" rx="4" fill="none" stroke="#F0997B" stroke-width="0.5" opacity="0.7"/>
+<text x="234"  y="557" text-anchor="middle" dominant-baseline="central" fill="#712B13" font-family="sans-serif" font-size="12">SQL</text>
+<rect x="262" y="546" width="56"  height="22" rx="4" fill="none" stroke="#F0997B" stroke-width="0.5" opacity="0.7"/>
+<text x="290"  y="557" text-anchor="middle" dominant-baseline="central" fill="#712B13" font-family="sans-serif" font-size="12">Python</text>
+<rect x="326" y="546" width="76"  height="22" rx="4" fill="none" stroke="#F0997B" stroke-width="0.5" opacity="0.7"/>
+<text x="364"  y="557" text-anchor="middle" dominant-baseline="central" fill="#712B13" font-family="sans-serif" font-size="12">Java / Scala</text>
+<rect x="410" y="546" width="96"  height="22" rx="4" fill="none" stroke="#F0997B" stroke-width="0.5" opacity="0.7"/>
+<text x="458"  y="557" text-anchor="middle" dominant-baseline="central" fill="#712B13" font-family="sans-serif" font-size="12">Apache Spark</text>
+<!-- compute row -->
+<text x="148" y="587" dominant-baseline="central" fill="#993C1D" font-family="sans-serif" font-size="11" opacity="0.6">Compute</text>
+<rect x="214" y="576" width="40"  height="22" rx="4" fill="none" stroke="#F0997B" stroke-width="0.5" opacity="0.7"/>
+<text x="234"  y="587" text-anchor="middle" dominant-baseline="central" fill="#712B13" font-family="sans-serif" font-size="12">CPU</text>
+<rect x="262" y="576" width="40"  height="22" rx="4" fill="none" stroke="#F0997B" stroke-width="0.5" opacity="0.7"/>
+<text x="282"  y="587" text-anchor="middle" dominant-baseline="central" fill="#712B13" font-family="sans-serif" font-size="12">GPU</text>
+<rect x="310" y="576" width="76"  height="22" rx="4" fill="none" stroke="#F0997B" stroke-width="0.5" opacity="0.7"/>
+<text x="348"  y="587" text-anchor="middle" dominant-baseline="central" fill="#712B13" font-family="sans-serif" font-size="12">Containers</text>
+<!-- floor number -->
+<rect x="78" y="544" width="34" height="22" rx="4" fill="#FAFAF8" stroke="#D3D1C7" stroke-width="0.5"/>
+<text x="95" y="555" text-anchor="middle" dominant-baseline="central" fill="#888780" font-family="sans-serif" font-size="12">02</text>
+
+<!-- CONNECTOR 2→3  mid=476 -->
+<line x1="350" y1="465" x2="350" y2="487" stroke="#888780" stroke-width="0.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+<rect x="282" y="467" width="136" height="16" rx="3" fill="#FAFAF8"/>
+<text x="350" y="476" text-anchor="middle" dominant-baseline="central" fill="#888780" font-family="sans-serif" font-size="9" letter-spacing="1.5">INDEPENDENT</text>
+
+<!-- ══ FLOOR 3 — CORTEX AI  y=314  h=146 ══ -->
+<rect x="118" y="314" width="464" height="146" rx="0" fill="#FAEEDA" stroke="#EF9F27" stroke-width="0.5"/>
+<line x1="118" y1="314" x2="582" y2="314" stroke="#EF9F27" stroke-width="0.5" opacity="0.4"/>
+<text x="148" y="334" dominant-baseline="central" fill="#633806" font-family="sans-serif" font-size="14" font-weight="500">Cortex AI</text>
+<text x="148" y="354" dominant-baseline="central" fill="#854F0B" font-family="sans-serif" font-size="12">LLMs · ML functions · natural language querying</text>
+<text x="148" y="370" dominant-baseline="central" fill="#854F0B" font-family="sans-serif" font-size="12">Built directly into the platform · no data movement required</text>
+<!-- chip row 1 -->
+<rect x="148" y="384" width="116" height="22" rx="4" fill="none" stroke="#EF9F27" stroke-width="0.5" opacity="0.7"/>
+<text x="206"  y="395" text-anchor="middle" dominant-baseline="central" fill="#633806" font-family="sans-serif" font-size="12">Snowflake Arctic</text>
+<rect x="272" y="384" width="100" height="22" rx="4" fill="none" stroke="#EF9F27" stroke-width="0.5" opacity="0.7"/>
+<text x="322"  y="395" text-anchor="middle" dominant-baseline="central" fill="#633806" font-family="sans-serif" font-size="12">Cortex Analyst</text>
+<rect x="380" y="384" width="88"  height="22" rx="4" fill="none" stroke="#EF9F27" stroke-width="0.5" opacity="0.7"/>
+<text x="424"  y="395" text-anchor="middle" dominant-baseline="central" fill="#633806" font-family="sans-serif" font-size="12">Document AI</text>
+<!-- chip row 2 -->
+<rect x="148" y="414" width="104" height="22" rx="4" fill="none" stroke="#EF9F27" stroke-width="0.5" opacity="0.7"/>
+<text x="200"  y="425" text-anchor="middle" dominant-baseline="central" fill="#633806" font-family="sans-serif" font-size="12">Snowflake Studio</text>
+<rect x="260" y="414" width="108" height="22" rx="4" fill="none" stroke="#EF9F27" stroke-width="0.5" opacity="0.7"/>
+<text x="314"  y="425" text-anchor="middle" dominant-baseline="central" fill="#633806" font-family="sans-serif" font-size="12">Snowflake Copilot</text>
+<rect x="376" y="414" width="84"  height="22" rx="4" fill="none" stroke="#EF9F27" stroke-width="0.5" opacity="0.7"/>
+<text x="418"  y="425" text-anchor="middle" dominant-baseline="central" fill="#633806" font-family="sans-serif" font-size="12">ML functions</text>
+<!-- floor number -->
+<rect x="78" y="366" width="34" height="22" rx="4" fill="#FAFAF8" stroke="#D3D1C7" stroke-width="0.5"/>
+<text x="95" y="377" text-anchor="middle" dominant-baseline="central" fill="#888780" font-family="sans-serif" font-size="12">03</text>
+
+<!-- CONNECTOR 3→4  mid=298 -->
+<line x1="350" y1="287" x2="350" y2="309" stroke="#888780" stroke-width="0.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+<rect x="282" y="289" width="136" height="16" rx="3" fill="#FAFAF8"/>
+<text x="350" y="298" text-anchor="middle" dominant-baseline="central" fill="#888780" font-family="sans-serif" font-size="9" letter-spacing="1.5">INDEPENDENT</text>
+
+<!-- ══ FLOOR 4 — CLOUD SERVICES  y=152  h=130 ══ -->
+<rect x="118" y="152" width="464" height="130" rx="0" fill="#EEEDFE" stroke="#AFA9EC" stroke-width="0.5"/>
+<line x1="118" y1="152" x2="582" y2="152" stroke="#AFA9EC" stroke-width="0.5" opacity="0.4"/>
+<text x="148" y="172" dominant-baseline="central" fill="#3C3489" font-family="sans-serif" font-size="14" font-weight="500">Cloud services</text>
+<text x="148" y="192" dominant-baseline="central" fill="#534AB7" font-family="sans-serif" font-size="12">Auth · metadata · query optimization · Horizon governance · always on</text>
+<!-- chip row 1 -->
+<rect x="148" y="206" width="104" height="22" rx="4" fill="none" stroke="#AFA9EC" stroke-width="0.5" opacity="0.7"/>
+<text x="200"  y="217" text-anchor="middle" dominant-baseline="central" fill="#3C3489" font-family="sans-serif" font-size="12">Horizon catalog</text>
+<rect x="260" y="206" width="84"  height="22" rx="4" fill="none" stroke="#AFA9EC" stroke-width="0.5" opacity="0.7"/>
+<text x="302"  y="217" text-anchor="middle" dominant-baseline="central" fill="#3C3489" font-family="sans-serif" font-size="12">Access control</text>
+<rect x="352" y="206" width="84"  height="22" rx="4" fill="none" stroke="#AFA9EC" stroke-width="0.5" opacity="0.7"/>
+<text x="394"  y="217" text-anchor="middle" dominant-baseline="central" fill="#3C3489" font-family="sans-serif" font-size="12">Query planner</text>
+<!-- chip row 2 -->
+<rect x="148" y="236" width="68"  height="22" rx="4" fill="none" stroke="#AFA9EC" stroke-width="0.5" opacity="0.7"/>
+<text x="182"  y="247" text-anchor="middle" dominant-baseline="central" fill="#3C3489" font-family="sans-serif" font-size="12">Metadata</text>
+<rect x="224" y="236" width="84"  height="22" rx="4" fill="none" stroke="#AFA9EC" stroke-width="0.5" opacity="0.7"/>
+<text x="266"  y="247" text-anchor="middle" dominant-baseline="central" fill="#3C3489" font-family="sans-serif" font-size="12">Authentication</text>
+<rect x="316" y="236" width="76"  height="22" rx="4" fill="none" stroke="#AFA9EC" stroke-width="0.5" opacity="0.7"/>
+<text x="354"  y="247" text-anchor="middle" dominant-baseline="central" fill="#3C3489" font-family="sans-serif" font-size="12">Compliance</text>
+<rect x="400" y="236" width="68"  height="22" rx="4" fill="none" stroke="#AFA9EC" stroke-width="0.5" opacity="0.7"/>
+<text x="434"  y="247" text-anchor="middle" dominant-baseline="central" fill="#3C3489" font-family="sans-serif" font-size="12">Security</text>
+<!-- floor number -->
+<rect x="78" y="204" width="34" height="22" rx="4" fill="#FAFAF8" stroke="#D3D1C7" stroke-width="0.5"/>
+<text x="95" y="215" text-anchor="middle" dominant-baseline="central" fill="#888780" font-family="sans-serif" font-size="12">04</text>
+
+<!-- CONNECTOR 4→5  mid=136 -->
+<line x1="350" y1="125" x2="350" y2="147" stroke="#888780" stroke-width="0.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+<rect x="282" y="127" width="136" height="16" rx="3" fill="#FAFAF8"/>
+<text x="350" y="136" text-anchor="middle" dominant-baseline="central" fill="#888780" font-family="sans-serif" font-size="9" letter-spacing="1.5">INDEPENDENT</text>
+
+<!-- ══ FLOOR 5 — SNOWGRID  y=20  h=100 ══ -->
+<rect x="106" y="20" width="488" height="100" rx="4" fill="#E1F5EE" stroke="#5DCAA5" stroke-width="0.5"/>
+<line x1="106" y1="20" x2="594" y2="20" stroke="#5DCAA5" stroke-width="0.5" opacity="0.4"/>
+<text x="350" y="40" text-anchor="middle" dominant-baseline="central" fill="#085041" font-family="sans-serif" font-size="14" font-weight="500">Snowgrid</text>
+<text x="350" y="60" text-anchor="middle" dominant-baseline="central" fill="#0F6E56" font-family="sans-serif" font-size="12">Cross-cloud · cross-region · secure data sharing · global collaboration</text>
+<rect x="186" y="74" width="84"  height="22" rx="4" fill="none" stroke="#5DCAA5" stroke-width="0.5" opacity="0.7"/>
+<text x="228"  y="85" text-anchor="middle" dominant-baseline="central" fill="#085041" font-family="sans-serif" font-size="12">Data sharing</text>
+<rect x="278" y="74" width="120" height="22" rx="4" fill="none" stroke="#5DCAA5" stroke-width="0.5" opacity="0.7"/>
+<text x="338"  y="85" text-anchor="middle" dominant-baseline="central" fill="#085041" font-family="sans-serif" font-size="12">Cross-region sync</text>
+<rect x="406" y="74" width="84"  height="22" rx="4" fill="none" stroke="#5DCAA5" stroke-width="0.5" opacity="0.7"/>
+<text x="448"  y="85" text-anchor="middle" dominant-baseline="central" fill="#085041" font-family="sans-serif" font-size="12">Replication</text>
+<!-- floor number -->
+<rect x="78" y="50" width="34" height="22" rx="4" fill="#FAFAF8" stroke="#D3D1C7" stroke-width="0.5"/>
+<text x="95" y="61" text-anchor="middle" dominant-baseline="central" fill="#888780" font-family="sans-serif" font-size="12">05</text>
+
+<!-- VERTICAL WALLS -->
+<line x1="118" y1="120" x2="118" y2="790" stroke="#444441" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="582" y1="120" x2="582" y2="790" stroke="#444441" stroke-width="1.5" stroke-linecap="round"/>
+
+<!-- FOOTER -->
+<text x="350" y="850" text-anchor="middle" fill="#888780" font-family="sans-serif" font-size="11" opacity="0.55">Floor 03 — Cortex AI — is built upon in Chapter 15: What the Data Knows</text>
+
+</svg>
+</body>
+</html>
