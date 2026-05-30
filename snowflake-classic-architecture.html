@@ -13,7 +13,7 @@ svg{width:100%;display:block}
 </head>
 <body>
 <div class="wrap">
-<svg viewBox="0 0 680 510" role="img" aria-label="Snowflake classic three-layer architecture — Storage, Compute, and Cloud Services">
+<svg viewBox="0 0 680 496" role="img" aria-label="Snowflake classic three-layer architecture as it existed at launch in 2015 — Storage, Compute, and Cloud Services">
 
 <defs>
   <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
@@ -22,78 +22,62 @@ svg{width:100%;display:block}
 </defs>
 
 <!-- TITLE -->
-<text x="340" y="26" text-anchor="middle" fill="#1A1A1A" font-family="sans-serif" font-size="15" font-weight="500">The Classic Snowflake Architecture</text>
-<text x="340" y="46" text-anchor="middle" fill="#888780" font-family="sans-serif" font-size="12">Three independent layers — the foundation established at launch in 2015</text>
+<text x="340" y="22" text-anchor="middle" fill="#1A1A1A" font-family="sans-serif" font-size="15" font-weight="500">The Classic Snowflake Architecture</text>
+<text x="340" y="42" text-anchor="middle" fill="#888780" font-family="sans-serif" font-size="12">Three independent layers — established at launch in 2015</text>
+<text x="340" y="58" text-anchor="middle" fill="#888780" font-family="sans-serif" font-size="11" opacity="0.6">Single cloud · single region — the original deployment model</text>
 
-<!-- GROUND LINE y=430 -->
-<line x1="120" y1="430" x2="580" y2="430" stroke="#444441" stroke-width="1.5" stroke-linecap="round"/>
-<text x="350" y="450" text-anchor="middle" fill="#888780" font-family="sans-serif" font-size="11">Cloud infrastructure — AWS · Azure · Google Cloud</text>
-<text x="350" y="466" text-anchor="middle" fill="#888780" font-family="sans-serif" font-size="11" opacity="0.6">Single cloud · single region — the original deployment model</text>
-
-<!-- ══ FLOOR 1 — STORAGE  y=334  h=96  bottom=430 ══ -->
-<rect x="120" y="334" width="460" height="96" rx="0" fill="#E6F1FB" stroke="#85B7EB" stroke-width="0.5"/>
-<line x1="120" y1="334" x2="580" y2="334" stroke="#85B7EB" stroke-width="0.5" opacity="0.4"/>
-<text x="148" y="358" dominant-baseline="central" fill="#0C447C" font-family="sans-serif" font-size="14" font-weight="500">Storage layer</text>
-<text x="148" y="378" dominant-baseline="central" fill="#185FA5" font-family="sans-serif" font-size="12">All data stored in compressed, columnar, encrypted format</text>
-<text x="148" y="396" dominant-baseline="central" fill="#185FA5" font-family="sans-serif" font-size="12" opacity="0.75">Structured · semi-structured · unstructured · Iceberg</text>
-<text x="148" y="414" dominant-baseline="central" fill="#185FA5" font-family="sans-serif" font-size="12" opacity="0.75">Persists independently of compute — always available</text>
+<!-- ══ FLOOR 3 — CLOUD SERVICES  y=70  h=114  bottom=184 ══ -->
+<rect x="120" y="70" width="460" height="114" rx="0" fill="#EEEDFE" stroke="#AFA9EC" stroke-width="0.5"/>
+<line x1="120" y1="70" x2="580" y2="70" stroke="#AFA9EC" stroke-width="0.5" opacity="0.4"/>
+<text x="148" y="96" dominant-baseline="central" fill="#3C3489" font-family="sans-serif" font-size="14" font-weight="500">Cloud services layer</text>
+<text x="148" y="116" dominant-baseline="central" fill="#534AB7" font-family="sans-serif" font-size="12">Coordinates and governs everything across the platform</text>
+<text x="148" y="134" dominant-baseline="central" fill="#534AB7" font-family="sans-serif" font-size="12" opacity="0.75">Auth · metadata · query optimization · governance · security</text>
+<text x="148" y="152" dominant-baseline="central" fill="#534AB7" font-family="sans-serif" font-size="12" opacity="0.75">Always on · fully managed · zero administration required</text>
 <!-- floor number -->
-<rect x="80" y="376" width="34" height="22" rx="4" fill="#FAFAF8" stroke="#D3D1C7" stroke-width="0.5"/>
-<text x="97" y="387" text-anchor="middle" dominant-baseline="central" fill="#888780" font-family="sans-serif" font-size="12">01</text>
+<rect x="80" y="113" width="34" height="22" rx="4" fill="#FAFAF8" stroke="#D3D1C7" stroke-width="0.5"/>
+<text x="97" y="124" text-anchor="middle" dominant-baseline="central" fill="#888780" font-family="sans-serif" font-size="12">03</text>
 
-<!-- CONNECTOR 1→2  span=242..334  mid=288 -->
-<line x1="350" y1="312" x2="350" y2="266" stroke="#888780" stroke-width="0.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
-<rect x="282" y="282" width="136" height="16" rx="3" fill="#FAFAF8"/>
-<text x="350" y="291" text-anchor="middle" dominant-baseline="central" fill="#888780" font-family="sans-serif" font-size="9" letter-spacing="1.5">INDEPENDENT</text>
+<!-- CONNECTOR 2→3  span=184..216  mid=200 -->
+<line x1="350" y1="188" x2="350" y2="212" stroke="#888780" stroke-width="0.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+<rect x="282" y="192" width="136" height="16" rx="3" fill="#FAFAF8"/>
+<text x="350" y="201" text-anchor="middle" dominant-baseline="central" fill="#888780" font-family="sans-serif" font-size="9" letter-spacing="1.5">INDEPENDENT</text>
 
-<!-- ══ FLOOR 2 — COMPUTE  y=146  h=96  bottom=242 ══ -->
-<rect x="120" y="146" width="460" height="168" rx="0" fill="#FAECE7" stroke="#F0997B" stroke-width="0.5"/>
-<line x1="120" y1="146" x2="580" y2="146" stroke="#F0997B" stroke-width="0.5" opacity="0.4"/>
-<text x="148" y="170" dominant-baseline="central" fill="#712B13" font-family="sans-serif" font-size="14" font-weight="500">Compute layer</text>
-<text x="148" y="190" dominant-baseline="central" fill="#993C1D" font-family="sans-serif" font-size="12">Virtual warehouses — MPP clusters · suspend when idle</text>
-<text x="148" y="210" dominant-baseline="central" fill="#993C1D" font-family="sans-serif" font-size="12" opacity="0.75">Scale up or out · pay only for what runs · no downtime</text>
-<text x="148" y="244" dominant-baseline="central" fill="#993C1D" font-family="sans-serif" font-size="11" opacity="0.55">Languages</text>
-<rect x="210" y="233" width="40" height="22" rx="4" fill="none" stroke="#F0997B" stroke-width="0.5" opacity="0.7"/>
-<text x="230" y="244" text-anchor="middle" dominant-baseline="central" fill="#712B13" font-family="sans-serif" font-size="12">SQL</text>
-<rect x="258" y="233" width="56" height="22" rx="4" fill="none" stroke="#F0997B" stroke-width="0.5" opacity="0.7"/>
-<text x="286" y="244" text-anchor="middle" dominant-baseline="central" fill="#712B13" font-family="sans-serif" font-size="12">Python</text>
-<rect x="322" y="233" width="76" height="22" rx="4" fill="none" stroke="#F0997B" stroke-width="0.5" opacity="0.7"/>
-<text x="360" y="244" text-anchor="middle" dominant-baseline="central" fill="#712B13" font-family="sans-serif" font-size="12">Java / Scala</text>
-<rect x="406" y="233" width="96" height="22" rx="4" fill="none" stroke="#F0997B" stroke-width="0.5" opacity="0.7"/>
-<text x="454" y="244" text-anchor="middle" dominant-baseline="central" fill="#712B13" font-family="sans-serif" font-size="12">Apache Spark</text>
-<text x="148" y="274" dominant-baseline="central" fill="#993C1D" font-family="sans-serif" font-size="11" opacity="0.55">Compute</text>
-<rect x="210" y="263" width="40" height="22" rx="4" fill="none" stroke="#F0997B" stroke-width="0.5" opacity="0.7"/>
-<text x="230" y="274" text-anchor="middle" dominant-baseline="central" fill="#712B13" font-family="sans-serif" font-size="12">CPU</text>
-<rect x="258" y="263" width="40" height="22" rx="4" fill="none" stroke="#F0997B" stroke-width="0.5" opacity="0.7"/>
-<text x="278" y="274" text-anchor="middle" dominant-baseline="central" fill="#712B13" font-family="sans-serif" font-size="12">GPU</text>
-<rect x="306" y="263" width="80" height="22" rx="4" fill="none" stroke="#F0997B" stroke-width="0.5" opacity="0.7"/>
-<text x="346" y="274" text-anchor="middle" dominant-baseline="central" fill="#712B13" font-family="sans-serif" font-size="12">Containers</text>
+<!-- ══ FLOOR 2 — COMPUTE  y=216  h=96  bottom=312 ══ -->
+<rect x="120" y="216" width="460" height="96" rx="0" fill="#FAECE7" stroke="#F0997B" stroke-width="0.5"/>
+<line x1="120" y1="216" x2="580" y2="216" stroke="#F0997B" stroke-width="0.5" opacity="0.4"/>
+<text x="148" y="242" dominant-baseline="central" fill="#712B13" font-family="sans-serif" font-size="14" font-weight="500">Compute layer</text>
+<text x="148" y="262" dominant-baseline="central" fill="#993C1D" font-family="sans-serif" font-size="12">Virtual warehouses — MPP clusters that execute queries</text>
+<text x="148" y="280" dominant-baseline="central" fill="#993C1D" font-family="sans-serif" font-size="12" opacity="0.75">Scale up or out · suspend when idle · pay only when running</text>
+<text x="148" y="298" dominant-baseline="central" fill="#993C1D" font-family="sans-serif" font-size="12" opacity="0.75">Standard virtual warehouse compute — CPU based</text>
 <!-- floor number -->
-<rect x="80" y="218" width="34" height="22" rx="4" fill="#FAFAF8" stroke="#D3D1C7" stroke-width="0.5"/>
-<text x="97" y="229" text-anchor="middle" dominant-baseline="central" fill="#888780" font-family="sans-serif" font-size="12">02</text>
+<rect x="80" y="259" width="34" height="22" rx="4" fill="#FAFAF8" stroke="#D3D1C7" stroke-width="0.5"/>
+<text x="97" y="270" text-anchor="middle" dominant-baseline="central" fill="#888780" font-family="sans-serif" font-size="12">02</text>
 
-<!-- CONNECTOR 2→3  span=60..146  mid=103 -->
-<line x1="350" y1="126" x2="350" y2="82" stroke="#888780" stroke-width="0.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
-<rect x="282" y="97" width="136" height="16" rx="3" fill="#FAFAF8"/>
-<text x="350" y="106" text-anchor="middle" dominant-baseline="central" fill="#888780" font-family="sans-serif" font-size="9" letter-spacing="1.5">INDEPENDENT</text>
+<!-- CONNECTOR 1→2  span=312..344  mid=328 -->
+<line x1="350" y1="316" x2="350" y2="340" stroke="#888780" stroke-width="0.5" marker-end="url(#arr)" marker-start="url(#arr)"/>
+<rect x="282" y="320" width="136" height="16" rx="3" fill="#FAFAF8"/>
+<text x="350" y="329" text-anchor="middle" dominant-baseline="central" fill="#888780" font-family="sans-serif" font-size="9" letter-spacing="1.5">INDEPENDENT</text>
 
-<!-- ══ FLOOR 3 — CLOUD SERVICES  y=60  h=114  bottom=174 ══ -->
-<rect x="120" y="60" width="460" height="114" rx="0" fill="#EEEDFE" stroke="#AFA9EC" stroke-width="0.5"/>
-<line x1="120" y1="60" x2="580" y2="60" stroke="#AFA9EC" stroke-width="0.5" opacity="0.4"/>
-<text x="148" y="84" dominant-baseline="central" fill="#3C3489" font-family="sans-serif" font-size="14" font-weight="500">Cloud services layer</text>
-<text x="148" y="104" dominant-baseline="central" fill="#534AB7" font-family="sans-serif" font-size="12">Coordinates and governs everything across the platform</text>
-<text x="148" y="122" dominant-baseline="central" fill="#534AB7" font-family="sans-serif" font-size="12" opacity="0.75">Auth · metadata · query optimization · governance · security</text>
-<text x="148" y="140" dominant-baseline="central" fill="#534AB7" font-family="sans-serif" font-size="12" opacity="0.75">Always on · fully managed · zero administration required</text>
+<!-- ══ FLOOR 1 — STORAGE  y=344  h=96  bottom=440 ══ -->
+<rect x="120" y="344" width="460" height="96" rx="0" fill="#E6F1FB" stroke="#85B7EB" stroke-width="0.5"/>
+<line x1="120" y1="344" x2="580" y2="344" stroke="#85B7EB" stroke-width="0.5" opacity="0.4"/>
+<text x="148" y="370" dominant-baseline="central" fill="#0C447C" font-family="sans-serif" font-size="14" font-weight="500">Storage layer</text>
+<text x="148" y="390" dominant-baseline="central" fill="#185FA5" font-family="sans-serif" font-size="12">All data stored in compressed, columnar, encrypted format</text>
+<text x="148" y="408" dominant-baseline="central" fill="#185FA5" font-family="sans-serif" font-size="12" opacity="0.75">Structured · semi-structured · the foundation everything rests on</text>
 <!-- floor number -->
-<rect x="80" y="102" width="34" height="22" rx="4" fill="#FAFAF8" stroke="#D3D1C7" stroke-width="0.5"/>
-<text x="97" y="113" text-anchor="middle" dominant-baseline="central" fill="#888780" font-family="sans-serif" font-size="12">03</text>
+<rect x="80" y="387" width="34" height="22" rx="4" fill="#FAFAF8" stroke="#D3D1C7" stroke-width="0.5"/>
+<text x="97" y="398" text-anchor="middle" dominant-baseline="central" fill="#888780" font-family="sans-serif" font-size="12">01</text>
+
+<!-- GROUND LINE y=444 -->
+<line x1="120" y1="444" x2="580" y2="444" stroke="#444441" stroke-width="1.5" stroke-linecap="round"/>
+<text x="350" y="460" text-anchor="middle" fill="#888780" font-family="sans-serif" font-size="11">Cloud infrastructure — AWS at launch · multi-cloud added later</text>
 
 <!-- VERTICAL WALLS -->
-<line x1="120" y1="60" x2="120" y2="430" stroke="#444441" stroke-width="1.5" stroke-linecap="round"/>
-<line x1="580" y1="60" x2="580" y2="430" stroke="#444441" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="120" y1="70" x2="120" y2="444" stroke="#444441" stroke-width="1.5" stroke-linecap="round"/>
+<line x1="580" y1="70" x2="580" y2="444" stroke="#444441" stroke-width="1.5" stroke-linecap="round"/>
 
 <!-- FOOTER -->
-<text x="350" y="492" text-anchor="middle" fill="#888780" font-family="sans-serif" font-size="11" opacity="0.5">The foundational architecture — 2015 to present · Snowgrid and Cortex AI added in 2022 onward</text>
+<text x="350" y="482" text-anchor="middle" fill="#888780" font-family="sans-serif" font-size="11" opacity="0.5">Foundational architecture — 2015 · Snowgrid and Cortex AI added from 2022</text>
 
 </svg>
 </div>
