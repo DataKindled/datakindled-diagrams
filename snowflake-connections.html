@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connecting to Snowflake — DataKindled</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{margin:0;padding:8px;background:#FAFAF8;font-family:sans-serif;display:flex;justify-content:center;align-items:flex-start}
+.wrap{width:100%;max-width:720px;padding:0 0 24px}
+
+.diagram-title{text-align:center;padding:16px 0 20px 0}
+.diagram-title h2{font-family:Georgia,'Times New Roman',serif;font-size:16px;font-weight:400;color:#1A1A1A;letter-spacing:0.01em}
+.diagram-title p{font-family:sans-serif;font-size:12px;color:#888780;margin-top:5px}
+
+/* Use-case row structure */
+.row{display:table;width:100%;border:0.5px solid #E8E4DC;border-radius:6px;margin-bottom:10px;background:#FFFFFF}
+.row-cell{display:table-cell;vertical-align:middle;padding:14px 16px}
+
+.usecase-cell{width:38%;border-right:0.5px solid #E8E4DC}
+.usecase-label{font-family:sans-serif;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;color:#888780;margin-bottom:4px;display:block}
+.usecase-text{font-family:Georgia,serif;font-size:14px;color:#1A1A1A;line-height:1.35}
+
+.tool-cell{width:62%}
+.tip-wrap{position:relative;display:inline-block}
+.chip{display:inline-flex;align-items:center;padding:6px 12px;border-radius:4px;font-family:sans-serif;font-size:12px;font-weight:500;border-width:1px;border-style:solid;cursor:default}
+.chip-icon{display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:6px;flex-shrink:0}
+.chip-native{background:#EEEDFE;color:#3C3489;border-color:#AFA9EC}
+.chip-developer{background:#FAECE7;color:#712B13;border-color:#F0997B}
+.chip-api{background:#E1F5EE;color:#085041;border-color:#5DCAA5}
+.chip-ecosystem{background:#FAEEDA;color:#633806;border-color:#EF9F27}
+
+.why-text{display:block;font-family:sans-serif;font-size:12px;color:#888780;margin-top:6px;line-height:1.5}
+
+.tooltip{display:none;position:absolute;top:calc(100% + 8px);left:0;background:#1A1A1A;color:#FAFAF8;font-family:sans-serif;font-size:11px;line-height:1.5;padding:10px 14px;border-radius:4px;width:260px;z-index:100;text-align:left}
+.tip-wrap:hover .tooltip{display:block}
+
+.deprecated-note{font-family:sans-serif;font-size:11px;color:#888780;font-style:italic;text-align:center;padding:4px 14px 16px 14px}
+
+.course-note{background:#FAFAF8;border:0.5px solid #E8E4DC;border-radius:4px;padding:12px 16px;margin-top:16px;font-family:sans-serif;font-size:12px;color:#444441;line-height:1.6}
+.course-note strong{color:#1A1A1A;font-weight:500}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="diagram-title">
+    <h2>Connecting to Snowflake</h2>
+    <p>Choose the way in based on what you're trying to do</p>
+  </div>
+
+  <!-- Exploring data interactively -->
+  <div class="row">
+    <div class="row-cell usecase-cell">
+      <span class="usecase-label">If you want to</span>
+      <span class="usecase-text">Explore data interactively, run queries, build apps</span>
+    </div>
+    <div class="row-cell tool-cell">
+      <div class="tip-wrap">
+        <span class="chip chip-native">
+          <svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/></svg>
+          Snowsight
+        </span>
+        <div class="tooltip">Snowflake's browser-based interface for managing data, running queries, and building applications. No installation required.</div>
+      </div>
+      <span class="why-text">Browser-based, no setup — the interface used throughout this course</span>
+    </div>
+  </div>
+
+  <!-- Scripting and automation -->
+  <div class="row">
+    <div class="row-cell usecase-cell">
+      <span class="usecase-label">If you want to</span>
+      <span class="usecase-text">Script and automate SQL workflows</span>
+    </div>
+    <div class="row-cell tool-cell">
+      <div class="tip-wrap">
+        <span class="chip chip-native">
+          <svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+          Snowflake CLI
+        </span>
+        <div class="tooltip">Open-source command-line tool for running SQL and supporting developer workflows. Flexible, extensible, and designed for modern development practices.</div>
+      </div>
+      <span class="why-text">Built for repeatable workflows — replaces the deprecated SnowSQL*</span>
+    </div>
+  </div>
+
+  <!-- Building apps in an editor -->
+  <div class="row">
+    <div class="row-cell usecase-cell">
+      <span class="usecase-label">If you want to</span>
+      <span class="usecase-text">Build applications without leaving your editor</span>
+    </div>
+    <div class="row-cell tool-cell">
+      <div class="tip-wrap">
+        <span class="chip chip-developer">
+          <svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          VS Code Extension
+        </span>
+        <div class="tooltip">The Snowflake Extension for Visual Studio Code lets you connect to Snowflake, run SQL, and manage your data architecture directly in VS Code.</div>
+      </div>
+      <span class="why-text">Stay in your development environment</span>
+    </div>
+  </div>
+
+  <!-- Infrastructure as code -->
+  <div class="row">
+    <div class="row-cell usecase-cell">
+      <span class="usecase-label">If you want to</span>
+      <span class="usecase-text">Manage infrastructure as code</span>
+    </div>
+    <div class="row-cell tool-cell">
+      <div class="tip-wrap">
+        <span class="chip chip-developer">
+          <svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="14 2 14 8 20 8"/><path d="M6 2h8l6 6v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"/></svg>
+          Terraform Provider
+        </span>
+        <div class="tooltip">Manage Snowflake infrastructure as code by defining databases, warehouses, users, and roles in declarative HCL files instead of SQL or the web interface.</div>
+      </div>
+      <span class="why-text">Declarative, version-controlled, repeatable environments</span>
+    </div>
+  </div>
+
+  <!-- Custom applications -->
+  <div class="row">
+    <div class="row-cell usecase-cell">
+      <span class="usecase-label">If you want to</span>
+      <span class="usecase-text">Connect a custom application programmatically</span>
+    </div>
+    <div class="row-cell tool-cell">
+      <div class="tip-wrap">
+        <span class="chip chip-api">
+          <svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18"/></svg>
+          APIs &amp; Drivers
+        </span>
+        <div class="tooltip">Snowflake provides APIs and drivers for programmatic authentication, query execution, and resource management outside standard SQL interfaces.</div>
+      </div>
+      <span class="why-text">Python, Java, .NET, Go, and more</span>
+    </div>
+  </div>
+
+  <!-- Existing tools -->
+  <div class="row">
+    <div class="row-cell usecase-cell">
+      <span class="usecase-label">If you want to</span>
+      <span class="usecase-text">Connect tools you already use</span>
+    </div>
+    <div class="row-cell tool-cell">
+      <div class="tip-wrap">
+        <span class="chip chip-ecosystem">
+          <svg class="chip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M6 9v6M18 6a3 3 0 0 0-3 3v0a3 3 0 0 0 3 3"/></svg>
+          Third-Party Tools
+        </span>
+        <div class="tooltip">Snowflake works with many industry-leading tools through a broad ecosystem of connectors, drivers, programming languages, and utilities.</div>
+      </div>
+      <span class="why-text">dbt, Fivetran, Tableau, Power BI, and more</span>
+    </div>
+  </div>
+
+  <div class="deprecated-note">* SnowSQL has been deprecated. Snowflake recommends moving to Snowflake CLI.</div>
+
+  <div class="course-note">
+    <strong>In this course:</strong> demos are recorded in Snowsight — available immediately after account setup with no additional installation required. Developer tools and programmatic access become relevant in later chapters.
+  </div>
+
+</div>
+</body>
+</html>
