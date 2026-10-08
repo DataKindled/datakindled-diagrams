@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Snowpark bridge · Applied ML on Snowflake · DataKindled</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 16px; background: #FAFAF8; font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: #1A1A1A; }
+  .dk { max-width: 720px; margin: 0 auto; }
+  .panel { background: #FFFFFF; border: 1px solid #E8E4DC; border-radius: 10px; overflow: hidden; margin-bottom: 14px; }
+  .ph { display: table; width: 100%; padding: 12px 18px; border-bottom: 1px solid #E8E4DC; background: #FAFAF8; }
+  .ph .lang { display: table-cell; font-family: "Playfair Display", Georgia, "Times New Roman", serif; font-size: 18px; }
+  .ph .hint { display: table-cell; text-align: right; font-size: 12.5px; color: #888780; vertical-align: middle; }
+  .code { overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 12px 0; }
+  .line { white-space: pre; font-family: "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace; font-size: 13.5px; line-height: 30px; padding: 0 18px 0 0; min-width: max-content; }
+  .gut { display: inline-block; width: 52px; text-align: center; vertical-align: middle; }
+  .m { display: inline-block; width: 20px; height: 20px; line-height: 20px; border-radius: 50%; background: #1A1A1A; color: #FAFAF8; font-family: Inter, sans-serif; font-size: 11px; font-weight: 500; text-align: center; }
+  .kw { font-weight: 600; }
+  .str { color: #5F5E5A; }
+  .legend { display: table; width: 100%; table-layout: fixed; border-collapse: separate; border-spacing: 10px 0; margin: 4px -10px 0; }
+  .legend > div { display: table-cell; background: #FFFFFF; border: 1px solid #E8E4DC; border-radius: 8px; padding: 10px 12px; font-size: 13px; }
+  .legend .m { margin-right: 8px; vertical-align: -5px; }
+  .legend b { font-weight: 500; }
+  .legend span.sub { display: block; margin: 4px 0 0 28px; color: #888780; font-size: 12px; }
+  .note { margin: 14px 2px 0; font-size: 13.5px; color: #888780; line-height: 1.55; }
+  .note em { font-style: normal; color: #C1440E; }
+</style>
+</head>
+<body>
+<div class="dk">
+
+  <div class="panel">
+    <div class="ph"><span class="lang">SQL</span><span class="hint">What you'd write today</span></div>
+    <div class="code">
+<div class="line"><span class="gut"><span class="m">4</span></span><span class="kw">SELECT</span> film_id, <span class="kw">COUNT</span>(*) <span class="kw">AS</span> views</div>
+<div class="line"><span class="gut"><span class="m">1</span></span><span class="kw">FROM</span> viewing_events</div>
+<div class="line"><span class="gut"><span class="m">2</span></span><span class="kw">WHERE</span> watch_duration_seconds &gt; 600</div>
+<div class="line"><span class="gut"><span class="m">3</span></span><span class="kw">GROUP BY</span> film_id;</div>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="ph"><span class="lang">Snowpark</span><span class="hint">The same question, in Python</span></div>
+    <div class="code">
+<div class="line"><span class="gut"></span><span class="kw">from</span> snowflake.snowpark.functions <span class="kw">import</span> col</div>
+<div class="line"><span class="gut"></span> </div>
+<div class="line"><span class="gut"></span>views_by_film = (</div>
+<div class="line"><span class="gut"><span class="m">1</span></span>    session.<span class="kw">table</span>(<span class="str">"viewing_events"</span>)</div>
+<div class="line"><span class="gut"><span class="m">2</span></span>        .<span class="kw">filter</span>(col(<span class="str">"watch_duration_seconds"</span>) &gt; 600)</div>
+<div class="line"><span class="gut"><span class="m">3</span></span>        .<span class="kw">group_by</span>(<span class="str">"film_id"</span>)</div>
+<div class="line"><span class="gut"><span class="m">4</span></span>        .<span class="kw">count</span>()</div>
+<div class="line"><span class="gut"></span>)</div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div><span class="m">1</span><b>Source</b><span class="sub">Which table</span></div>
+    <div><span class="m">2</span><b>Filter</b><span class="sub">Which rows</span></div>
+    <div><span class="m">3</span><b>Group</b><span class="sub">By which column</span></div>
+    <div><span class="m">4</span><b>Count</b><span class="sub">What to return</span></div>
+  </div>
+
+  <p class="note">Same four steps. SQL puts <code style="font-family:inherit">SELECT</code> first, but Snowflake evaluates it last; <em>Snowpark writes the steps in the order they're evaluated.</em></p>
+
+</div>
+</body>
+</html>
