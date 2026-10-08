@@ -1,29 +1,45 @@
-<!-- DataKindled · Module 1 · The three Python libraries (paste into a Kajabi custom code block) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The three Python libraries · Applied ML on Snowflake · DataKindled</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
 <style>
-  .dk-libs { max-width: 880px; margin: 28px auto; padding: 0; background: #FAFAF8; font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: #1A1A1A; }
-  .dk-libs .dk-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .dk-libs table { width: 100%; min-width: 640px; border-collapse: collapse; table-layout: fixed; background: #FFFFFF; border: 1px solid #E8E4DC; border-radius: 10px; }
-  .dk-libs th, .dk-libs td { padding: 16px 18px; text-align: left; vertical-align: top; border-bottom: 1px solid #E8E4DC; font-size: 15px; line-height: 1.5; }
-  .dk-libs tr:last-child td { border-bottom: none; }
-  .dk-libs thead th { background: #1A1A1A; color: #FAFAF8; border-bottom: none; }
-  .dk-libs thead th:first-child { border-top-left-radius: 9px; }
-  .dk-libs thead th:last-child { border-top-right-radius: 9px; }
-  .dk-libs .dk-name { display: block; font-family: "Playfair Display", Georgia, "Times New Roman", serif; font-size: 17px; font-weight: 400; line-height: 1.25; white-space: nowrap; }
-  .dk-libs .dk-pkg { display: block; margin-top: 6px; white-space: nowrap; font-family: "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace; font-size: 12px; color: #AAAAAA; }
-  .dk-libs tbody th { width: 132px; white-space: nowrap; font-size: 13px; font-weight: 500; color: #888780; background: #FAFAF8; border-right: 1px solid #E8E4DC; }
-  .dk-libs tbody tr.dk-course th { color: #C1440E; }
-  .dk-libs code { font-family: "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace; font-size: 13px; background: #FAFAF8; border: 1px solid #E8E4DC; border-radius: 4px; padding: 1px 5px; }
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 16px; background: #FAFAF8; font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: #1A1A1A; }
+  .dk-libs { max-width: 720px; margin: 0 auto; }
+  .dk-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; min-width: 600px; border-collapse: separate; border-spacing: 0; table-layout: fixed; background: #FFFFFF; border: 1px solid #E8E4DC; border-radius: 10px; overflow: hidden; }
+  th, td { padding: 14px 16px; text-align: left; vertical-align: top; font-size: 14.5px; line-height: 1.5; border-bottom: 1px solid #E8E4DC; }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: none; }
+  thead th { background: #1A1A1A; color: #FAFAF8; border-bottom: none; }
+  thead tr.dk-names th { padding-bottom: 4px; vertical-align: bottom; font-family: "Playfair Display", Georgia, "Times New Roman", serif; font-size: 17px; font-weight: 400; line-height: 1.25; }
+  thead tr.dk-pkgs th { padding-top: 0; padding-bottom: 14px; font-family: "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace; font-size: 11.5px; font-weight: 400; color: #AAAAAA; white-space: nowrap; }
+  tbody th { font-size: 12.5px; font-weight: 500; color: #888780; background: #FAFAF8; border-right: 1px solid #E8E4DC; white-space: nowrap; }
+  tbody tr.dk-course th { color: #C1440E; }
+  code { font-family: "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace; font-size: 12.5px; background: #FAFAF8; border: 1px solid #E8E4DC; border-radius: 4px; padding: 1px 5px; }
 </style>
+</head>
+<body>
 <div class="dk-libs">
   <div class="dk-scroll">
     <table>
-      <colgroup><col style="width:132px"><col><col><col></colgroup>
+      <colgroup><col style="width:118px"><col><col><col></colgroup>
       <thead>
-        <tr>
+        <tr class="dk-names">
           <th></th>
-          <th><span class="dk-name">Snowpark</span><span class="dk-pkg">snowflake-snowpark-python</span></th>
-          <th><span class="dk-name">Snowflake Python APIs</span><span class="dk-pkg">snowflake.core</span></th>
-          <th><span class="dk-name">Snowflake ML Python APIs</span><span class="dk-pkg">snowflake-ml-python</span></th>
+          <th>Snowpark</th>
+          <th>Snowflake Python APIs</th>
+          <th>Snowflake ML Python APIs</th>
+        </tr>
+        <tr class="dk-pkgs">
+          <th></th>
+          <th>snowflake-snowpark-python</th>
+          <th>snowflake.core</th>
+          <th>snowflake-ml-python</th>
         </tr>
       </thead>
       <tbody>
@@ -55,3 +71,5 @@
     </table>
   </div>
 </div>
+</body>
+</html>
