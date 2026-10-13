@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Machine Learning Lifecycle · Applied ML on Snowflake · DataKindled</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 16px; background: #FAFAF8; font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: #1A1A1A; }
+  .dk { max-width: 720px; margin: 0 auto; }
+  .card { background: #FFFFFF; border: 1px solid #E8E4DC; border-radius: 10px; overflow: hidden; }
+  .scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  svg { display: block; width: 100%; min-width: 600px; height: auto; }
+  .boundary { font-size: 12.5px; fill: #888780; }
+  .stage { cursor: pointer; outline: none; }
+  .stage .lbl { font-family: "Playfair Display", Georgia, "Times New Roman", serif; font-size: 16px; fill: #1A1A1A; }
+  .stage .node { fill: #FFFFFF; stroke: #1A1A1A; stroke-width: 2; }
+  .stage .ring { fill: none; stroke: #1A1A1A; stroke-width: 1.5; opacity: 0; }
+  .stage.on .node { fill: #1A1A1A; }
+  .stage.on .ring { opacity: 1; }
+  .stage:hover .node { stroke-width: 3; }
+  .stage:focus-visible .ring { opacity: 1; stroke-dasharray: 3 3; }
+  .drift { cursor: pointer; outline: none; }
+  .drift text { font-size: 13px; fill: #C1440E; }
+  .drift.on text { font-weight: 500; }
+  .drift:focus-visible text { text-decoration: underline; }
+  .hint { padding: 10px 18px 0; font-size: 12.5px; color: #888780; }
+  .panel { height: 136px; margin: 8px 18px 18px; padding: 14px 18px; background: #FAFAF8; border: 1px solid #E8E4DC; border-radius: 8px; overflow-y: auto; }
+  @media (max-width: 560px) { .panel { height: 216px; } .hint { padding-right: 18px; } }
+  .panel h2 { margin: 0 0 6px; font-family: "Playfair Display", Georgia, serif; font-size: 20px; font-weight: 400; line-height: 1.25; }
+  .panel p { margin: 0; font-size: 14.5px; line-height: 1.55; }
+  .panel .phase { margin-top: 8px; font-size: 12.5px; color: #888780; }
+  .panel.drifted h2 { color: #C1440E; }
+</style>
+</head>
+<body>
+<div class="dk">
+  <div class="card">
+    <div class="scroll">
+      <svg id="loop" viewBox="0 0 720 340" role="group" aria-label="The machine learning lifecycle: seven stages in a cycle"></svg>
+    </div>
+    <div class="hint">Tap any stage to see what it involves and where the course covers it.</div>
+    <div class="panel" id="panel" aria-live="polite">
+      <h2 id="p-title"></h2>
+      <p id="p-desc"></p>
+      <p class="phase" id="p-phase"></p>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var NS = "http://www.w3.org/2000/svg";
+  var INK = "#1A1A1A", ACC = "#C1440E";
+  var cx = 360, cy = 180, rx = 220, ry = 112;
+  var stages = [
+    { id: "prepare", name: "Prepare data",
+      desc: "Bring together the data a model learns from and clean it: joining tables, resolving blanks, unpacking semi-structured fields.",
+      phase: "Covered in Phase 1 (SQL-native ML) and Phase 2 (Building custom models)" },
+    { id: "engineer", name: "Engineer features",
+      desc: "Turn raw columns into signals a model can learn from, such as how recently a subscriber last watched something.",
+      phase: "Covered in Phase 2 (Building custom models)" },
+    { id: "train", name: "Train",
+      desc: "Fit a model to past data so it learns the patterns that came before an outcome, like a subscriber cancelling.",
+      phase: "Covered in Phase 1 (SQL-native ML) and Phase 2 (Building custom models)" },
+    { id: "evaluate", name: "Evaluate",
+      desc: "Test the model on data it hasn't seen, to check its predictions hold up before anyone relies on them.",
+      phase: "Covered in Phase 1 (SQL-native ML) and Phase 2 (Building custom models)" },
+    { id: "register", name: "Register",
+      desc: "Save the trained model as a named, versioned asset in the Model Registry, so it can be governed and deployed.",
+      phase: "Covered in Phase 2 (Building custom models)" },
+    { id: "deploy", name: "Deploy",
+      desc: "Put the model where the business uses it, so its predictions reach an application, a dashboard, or an automated decision.",
+      phase: "Covered in Phase 3 (Deploying and governing)" },
+    { id: "monitor", name: "Monitor",
+      desc: "Watch the model's performance over time, so you notice when its predictions start to drift.",
+      phase: "Covered in Phase 3 (Deploying and governing)" }
+  ];
+  var drift = { id: "retrain", name: "The cycle starts again",
+      desc: "When monitoring shows drift, return to the start: fresh data, a retrained model, and a new version in the registry.",
+      phase: "Covered in Phase 3 (Deploying and governing)", drift: true };
+
+  var n = stages.length, angs = [];
+  for (var i = 0; i < n; i++) angs.push(180 - i * 360 / n);
+  function pt(a, off) {
+    off = off || 0; var t = a * Math.PI / 180;
+    return [cx + (rx + off) * Math.cos(t), cy - (ry + off * ry / rx) * Math.sin(t)];
+  }
+  function el(tag, attrs, parent) {
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function arcPath(a0, a1) {
+    var d = "", steps = 48;
+    for (var k = 0; k <= steps; k++) {
+      var p = pt(a0 + (a1 - a0) * k / steps);
+      d += (k ? " L " : "M ") + p[0].toFixed(1) + " " + p[1].toFixed(1);
+    }
+    return d;
+  }
+  function chevron(a, color, parent) {
+    var p = pt(a), q = pt(a - 0.5);
+    var ang = Math.atan2(q[1] - p[1], q[0] - p[0]) * 180 / Math.PI;
+    el("polygon", { points: "-8,-6.5 7,0 -8,6.5", fill: color,
+      transform: "translate(" + p[0].toFixed(1) + "," + p[1].toFixed(1) + ") rotate(" + ang.toFixed(1) + ")" }, parent);
+  }
+
+  var svg = document.getElementById("loop");
+  el("rect", { x: 14, y: 14, width: 692, height: 312, rx: 10, fill: "none", stroke: "#E8E4DC", "stroke-width": 1.5 }, svg);
+  var t0 = el("text", { x: 32, y: 40, "class": "boundary" }, svg); t0.textContent = "Inside Snowflake, on governed data";
+
+  el("path", { d: arcPath(angs[0], angs[n - 1]), fill: "none", stroke: INK, "stroke-width": 2, "stroke-linecap": "round" }, svg);
+  el("path", { d: arcPath(angs[n - 1], angs[0] - 360), fill: "none", stroke: ACC, "stroke-width": 3, "stroke-linecap": "round" }, svg);
+  for (var c = 0; c < n - 1; c++) chevron((angs[c] + angs[c + 1]) / 2, INK, svg);
+  chevron((angs[n - 1] + angs[0] - 360) / 2, ACC, svg);
+
+  var groups = {};
+  function makeButton(g, item) {
+    g.setAttribute("role", "button");
+    g.setAttribute("tabindex", "0");
+    g.setAttribute("aria-label", item.name);
+    g.addEventListener("click", function () { select(item.id); });
+    g.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " " || e.keyCode === 13 || e.keyCode === 32) { e.preventDefault(); select(item.id); }
+    });
+    groups[item.id] = g;
+  }
+
+  for (var s = 0; s < n; s++) {
+    var a = angs[s], p = pt(a), g = el("g", { "class": "stage" }, svg);
+    el("circle", { cx: p[0], cy: p[1], r: 20, fill: "transparent" }, g);
+    el("circle", { "class": "ring", cx: p[0], cy: p[1], r: 15 }, g);
+    el("circle", { "class": "node", cx: p[0], cy: p[1], r: 8 }, g);
+    var cs = Math.cos(a * Math.PI / 180), sn = Math.sin(a * Math.PI / 180);
+    var lp = pt(a, 30), anchor = cs > 0.3 ? "start" : (cs < -0.3 ? "end" : "middle");
+    var ly = lp[1] + (Math.abs(sn) < 0.5 ? 5 : (sn > 0 ? 0 : 14));
+    var tx = el("text", { "class": "lbl", x: lp[0].toFixed(1), y: ly.toFixed(1), "text-anchor": anchor }, g);
+    tx.textContent = stages[s].name;
+    makeButton(g, stages[s]);
+  }
+
+  var dp = pt((angs[n - 1] + angs[0] - 360) / 2, -64);
+  var dg = el("g", { "class": "drift" }, svg);
+  var d1 = el("text", { x: (dp[0] + 18).toFixed(1), y: (dp[1] - 8).toFixed(1) }, dg); d1.textContent = "When performance drifts,";
+  var d2 = el("text", { x: (dp[0] + 18).toFixed(1), y: (dp[1] + 10).toFixed(1) }, dg); d2.textContent = "the cycle starts again";
+  makeButton(dg, drift);
+
+  var all = stages.concat([drift]);
+  function select(id) {
+    var item = null;
+    for (var i = 0; i < all.length; i++) if (all[i].id === id) item = all[i];
+    if (!item) return;
+    for (var k in groups) {
+      var on = (k === id);
+      groups[k].setAttribute("class", (k === "retrain" ? "drift" : "stage") + (on ? " on" : ""));
+      groups[k].setAttribute("aria-pressed", on ? "true" : "false");
+    }
+    document.getElementById("p-title").textContent = item.name;
+    document.getElementById("p-desc").textContent = item.desc;
+    document.getElementById("p-phase").textContent = item.phase;
+    document.getElementById("panel").className = "panel" + (item.drift ? " drifted" : "");
+  }
+  var start = (window.location.hash || "").replace("#", "");
+  select(start && groups[start] ? start : "prepare");
+})();
+</script>
+</body>
+</html>
