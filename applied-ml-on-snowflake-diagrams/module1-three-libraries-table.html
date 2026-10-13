@@ -12,7 +12,7 @@
   body { margin: 0; padding: 16px; background: #FAFAF8; font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: #1A1A1A; }
   .dk-libs { max-width: 720px; margin: 0 auto; }
   .dk-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  table { width: 100%; min-width: 600px; border-collapse: separate; border-spacing: 0; table-layout: fixed; background: #FFFFFF; border: 1px solid #E8E4DC; border-radius: 10px; overflow: hidden; }
+  table { width: 100%; min-width: 480px; border-collapse: separate; border-spacing: 0; table-layout: fixed; background: #FFFFFF; border: 1px solid #E8E4DC; border-radius: 10px; overflow: hidden; }
   th, td { padding: 14px 16px; text-align: left; vertical-align: top; font-size: 14.5px; line-height: 1.5; border-bottom: 1px solid #E8E4DC; }
   tbody tr:last-child th, tbody tr:last-child td { border-bottom: none; }
   thead th { background: #1A1A1A; color: #FAFAF8; border-bottom: none; }
@@ -20,6 +20,13 @@
   thead tr.dk-pkgs th { padding-top: 0; padding-bottom: 14px; font-family: "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace; font-size: 11.5px; font-weight: 400; color: #AAAAAA; white-space: nowrap; }
   tbody th { font-size: 12.5px; font-weight: 500; color: #888780; background: #FAFAF8; border-right: 1px solid #E8E4DC; white-space: nowrap; }
   tbody tr.dk-course th { color: #C1440E; }
+  @media (max-width: 640px) {
+    th, td { padding: 11px 11px; font-size: 13.5px; }
+    thead tr.dk-names th { font-size: 15.5px; padding-bottom: 4px; }
+    thead tr.dk-pkgs th { white-space: normal; font-size: 11px; line-height: 1.35; }
+    tbody th { white-space: normal; font-size: 12px; }
+    col.dk-label { width: 92px !important; }
+  }
   code { font-family: "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace; font-size: 12.5px; background: #FAFAF8; border: 1px solid #E8E4DC; border-radius: 4px; padding: 1px 5px; }
 </style>
 </head>
@@ -27,7 +34,7 @@
 <div class="dk-libs">
   <div class="dk-scroll">
     <table>
-      <colgroup><col style="width:118px"><col><col><col></colgroup>
+      <colgroup><col class="dk-label" style="width:118px"><col><col><col></colgroup>
       <thead>
         <tr class="dk-names">
           <th></th>
@@ -37,9 +44,9 @@
         </tr>
         <tr class="dk-pkgs">
           <th></th>
-          <th>snowflake-snowpark-python</th>
-          <th>snowflake.core</th>
-          <th>snowflake-ml-python</th>
+          <th>snowflake-<wbr>snowpark-<wbr>python</th>
+          <th>snowflake.<wbr>core</th>
+          <th>snowflake-<wbr>ml-<wbr>python</th>
         </tr>
       </thead>
       <tbody>
