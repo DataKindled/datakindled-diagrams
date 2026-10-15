@@ -28,11 +28,10 @@
   .drift.on text { font-weight: 500; }
   .drift:focus-visible text { text-decoration: underline; }
   .hint { padding: 10px 18px 0; font-size: 12.5px; color: #888780; }
-  .panel { height: 136px; margin: 8px 18px 18px; padding: 14px 18px; background: #FAFAF8; border: 1px solid #E8E4DC; border-radius: 8px; overflow-y: auto; }
-  @media (max-width: 560px) { .panel { height: 216px; } .hint { padding-right: 18px; } }
+  .panel { height: 112px; margin: 8px 18px 18px; padding: 14px 18px; background: #FAFAF8; border: 1px solid #E8E4DC; border-radius: 8px; overflow-y: auto; }
+  @media (max-width: 560px) { .panel { height: 160px; } .hint { padding-right: 18px; } }
   .panel h2 { margin: 0 0 6px; font-family: "Playfair Display", Georgia, serif; font-size: 20px; font-weight: 400; line-height: 1.25; }
   .panel p { margin: 0; font-size: 14.5px; line-height: 1.55; }
-  .panel .phase { margin-top: 8px; font-size: 12.5px; color: #888780; }
   .panel.drifted h2 { color: #C1440E; }
 </style>
 </head>
@@ -42,11 +41,10 @@
     <div class="scroll">
       <svg id="loop" viewBox="0 0 720 340" role="group" aria-label="The machine learning lifecycle: seven stages in a cycle"></svg>
     </div>
-    <div class="hint">Tap any stage to see what it involves and where the course covers it.</div>
+    <div class="hint">Tap any stage to see what it involves.</div>
     <div class="panel" id="panel" aria-live="polite">
       <h2 id="p-title"></h2>
       <p id="p-desc"></p>
-      <p class="phase" id="p-phase"></p>
     </div>
   </div>
 </div>
@@ -57,30 +55,22 @@
   var cx = 360, cy = 180, rx = 220, ry = 112;
   var stages = [
     { id: "prepare", name: "Prepare data",
-      desc: "Bring together the data a model learns from and clean it: joining tables, resolving blanks, unpacking semi-structured fields.",
-      phase: "Covered in Phase 1 (SQL-native ML) and Phase 2 (Building custom models)" },
+      desc: "Bring together the data a model learns from and clean it: joining tables, resolving blanks, unpacking semi-structured fields." },
     { id: "engineer", name: "Engineer features",
-      desc: "Turn raw columns into signals a model can learn from, such as how recently a subscriber last watched something.",
-      phase: "Covered in Phase 2 (Building custom models)" },
+      desc: "Turn raw columns into signals a model can learn from, such as how recently a subscriber last watched something." },
     { id: "train", name: "Train",
-      desc: "Fit a model to past data so it learns the patterns that came before an outcome, like a subscriber cancelling.",
-      phase: "Covered in Phase 1 (SQL-native ML) and Phase 2 (Building custom models)" },
+      desc: "Fit a model to past data so it learns the patterns that came before an outcome, like a subscriber cancelling." },
     { id: "evaluate", name: "Evaluate",
-      desc: "Test the model on data it hasn't seen, to check its predictions hold up before anyone relies on them.",
-      phase: "Covered in Phase 1 (SQL-native ML) and Phase 2 (Building custom models)" },
+      desc: "Test the model on data it hasn't seen, to check its predictions hold up before anyone relies on them." },
     { id: "register", name: "Register",
-      desc: "Save the trained model as a named, versioned asset in the Model Registry, so it can be governed and deployed.",
-      phase: "Covered in Phase 2 (Building custom models)" },
+      desc: "Save the trained model as a named, versioned asset in the Model Registry, so it can be governed and deployed." },
     { id: "deploy", name: "Deploy",
-      desc: "Put the model where the business uses it, so its predictions reach an application, a dashboard, or an automated decision.",
-      phase: "Covered in Phase 3 (Deploying and governing)" },
+      desc: "Put the model where the business uses it, so its predictions reach an application, a dashboard, or an automated decision." },
     { id: "monitor", name: "Monitor",
-      desc: "Watch the model's performance over time, so you notice when its predictions start to drift.",
-      phase: "Covered in Phase 3 (Deploying and governing)" }
+      desc: "Watch the model's performance over time, so you notice when its predictions start to drift." }
   ];
   var drift = { id: "retrain", name: "The cycle starts again",
-      desc: "When monitoring shows drift, return to the start: fresh data, a retrained model, and a new version in the registry.",
-      phase: "Covered in Phase 3 (Deploying and governing)", drift: true };
+      desc: "When monitoring shows drift, return to the start: fresh data, a retrained model, and a new version in the registry.", drift: true };
 
   var n = stages.length, angs = [];
   for (var i = 0; i < n; i++) angs.push(180 - i * 360 / n);
@@ -161,7 +151,6 @@
     }
     document.getElementById("p-title").textContent = item.name;
     document.getElementById("p-desc").textContent = item.desc;
-    document.getElementById("p-phase").textContent = item.phase;
     document.getElementById("panel").className = "panel" + (item.drift ? " drifted" : "");
   }
   var start = (window.location.hash || "").replace("#", "");
