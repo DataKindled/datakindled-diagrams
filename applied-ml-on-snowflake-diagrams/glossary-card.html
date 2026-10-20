@@ -10,8 +10,8 @@
 <style>
   * { box-sizing: border-box; }
   html, body { margin: 0; background: transparent; }
-  body { padding: 4px 2px 8px; font-family: Inter, system-ui, sans-serif; color: #1A1A1A; }
-  .card { max-width: 720px; margin: 0 auto; background: #FFFFFF; border: 1px solid #E8E4DC; border-left: 3px solid #C1440E;
+  body { padding: 2px 2px 6px; font-family: Inter, system-ui, sans-serif; color: #1A1A1A; }
+  .card { max-width: 720px; margin: 0; background: #FFFFFF; border: 1px solid #E8E4DC; border-left: 3px solid #C1440E;
           border-radius: 8px; padding: 20px 22px; display: flex; gap: 18px; align-items: center; }
   .icon { flex: 0 0 auto; width: 44px; height: 44px; }
   .text { flex: 1 1 auto; min-width: 0; }
@@ -23,7 +23,8 @@
   a.btn:hover, a.btn:focus-visible { background: #C1440E; }
   a.btn:focus-visible { outline: 2px solid #1A1A1A; outline-offset: 2px; }
   @media (max-width: 560px) {
-    .card { flex-wrap: wrap; padding: 18px; gap: 14px; }
+    .card { flex-wrap: wrap; padding: 14px 16px; gap: 12px; }
+    .eyebrow { display: none; }
     .icon { width: 36px; height: 36px; }
     .text { flex-basis: calc(100% - 52px); }
     a.btn { width: 100%; text-align: center; }
