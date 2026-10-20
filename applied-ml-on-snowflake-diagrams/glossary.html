@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glossary · Applied ML on Snowflake</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #FAFAF8; --ink: #1A1A1A; --accent: #C1440E; --line: #E8E4DC;
+    --muted: #888780; --tint: #FAECE7; --card: #FFFFFF;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; padding: 16px; background: var(--bg); color: var(--ink);
+         font-family: Inter, system-ui, sans-serif; font-size: 16px; line-height: 1.6; }
+  .wrap { max-width: 720px; margin: 0 auto; padding-bottom: 48px; }
+
+  header { padding: 24px 0 8px; }
+  .eyebrow { font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
+  h1 { font-family: "Playfair Display", Georgia, serif; font-weight: 400; font-size: 36px; line-height: 1.15; margin: 0 0 10px; }
+  .intro { margin: 0 0 20px; color: var(--ink); }
+
+  .search { position: sticky; top: 0; z-index: 2; background: var(--bg); padding: 10px 0 12px; border-bottom: 1px solid var(--line); }
+  .search label { display: block; font-size: 13px; color: var(--muted); margin-bottom: 6px; }
+  .search input { width: 100%; font: inherit; padding: 10px 14px; border: 1px solid var(--line); border-radius: 6px;
+                  background: var(--card); color: var(--ink); }
+  .search input:focus { outline: 2px solid var(--ink); outline-offset: 1px; }
+  .letters { display: flex; flex-wrap: wrap; gap: 2px 10px; margin-top: 10px; font-size: 14px; }
+  .letters a { color: var(--ink); text-decoration: none; padding: 2px 0; }
+  .letters a:hover { color: var(--accent); }
+  .count { font-size: 13px; color: var(--muted); margin-top: 8px; min-height: 1.2em; }
+
+  section.group { margin-top: 28px; scroll-margin-top: 150px; }
+  section.group h2 { font-family: "Playfair Display", Georgia, serif; font-weight: 400; font-size: 24px;
+                     margin: 0 0 4px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+  dl { margin: 0; }
+  .term { padding: 16px 0; border-bottom: 1px solid var(--line); }
+  .term:last-child { border-bottom: none; }
+  dt { font-family: "Playfair Display", Georgia, serif; font-size: 20px; line-height: 1.3; margin: 0 0 4px; }
+  dt .aka { font-family: Inter, system-ui, sans-serif; font-size: 13px; color: var(--muted); margin-left: 6px; }
+  dd { margin: 0; }
+  dd p { margin: 0 0 6px; }
+  dd .latent { font-size: 15px; color: #4A4A48; }
+  dd .latent b { font-weight: 500; color: var(--ink); }
+  dd .see { font-size: 14px; color: var(--muted); }
+  dd .see a { color: var(--ink); text-underline-offset: 2px; }
+  .term:target dt { color: var(--accent); }
+  code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.9em; background: var(--tint); padding: 1px 4px; border-radius: 3px; }
+
+  .empty { display: none; padding: 24px 0; color: var(--muted); }
+  footer { margin-top: 40px; font-size: 13px; color: var(--muted); }
+
+  @media (max-width: 480px) {
+    h1 { font-size: 30px; }
+    dt { font-size: 18px; }
+  }
+  @media print {
+    .search { position: static; }
+    .search input, .letters, .count { display: none; }
+    .term { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="eyebrow">Applied ML on Snowflake</p>
+    <h1>Glossary</h1>
+    <p class="intro">The machine learning and Snowflake terms used in this course, in plain language, each with an example from Latent. Lessons define terms as they come up; this page is for looking them up later.</p>
+  </header>
+
+  <div class="search">
+    <label for="q">Search the glossary</label>
+    <input id="q" type="search" placeholder="Try “label” or “precision”" autocomplete="off">
+    <nav class="letters" id="letters" aria-label="Jump to letter"></nav>
+    <div class="count" id="count" aria-live="polite"></div>
+  </div>
+
+  <div id="list"></div>
+  <p class="empty" id="empty">No terms match that search.</p>
+
+  <footer>DataKindled · Applied ML on Snowflake. New terms are added as the course grows.</footer>
+</div>
+
+<script>
+// Each entry: term, optional aka, definition, Latent example, optional "see also" (term names).
+var TERMS = [
+  { t: "Accuracy", d: "The share of all predictions a model got right. It's easy to understand but misleading when one outcome is rare.", l: "Only 12.5% of Latent's new subscribers churn in their first year, so a model that predicts “stayed” for everyone is 87.5% accurate and catches no churners at all.", s: ["Class imbalance", "Precision", "Recall"] },
+  { t: "Anomaly detection", d: "Finding values that fall outside what's expected, based on past patterns. One of Snowflake's SQL-based ML Functions.", l: "Flagging a day when viewing on Latent is unusually low.", s: ["ML Functions"] },
+  { t: "Artificial intelligence", aka: "AI", d: "The broad field of building systems that perform tasks associated with human intelligence, such as understanding language, recognizing images, and making decisions. Machine learning is the main way modern AI is built. In this course, AI means systems built on large pre-trained models that work with language, documents, and images.", l: "Understanding what viewers say about Latent's films, or what its scripts reveal.", s: ["Machine learning"] },
+  { t: "AUC", aka: "area under the ROC curve", d: "A score for how well a classification model ranks positive cases above negative ones, from 0.5 (no better than chance) to 1.0 (perfect).", l: "How well the churn model ranks subscribers who will leave above subscribers who will stay.", s: ["Classification", "Evaluation"] },
+  { t: "Class imbalance", d: "When one outcome is much rarer than the others in the data. It makes accuracy misleading, so metrics like precision and recall matter more.", l: "Churners are about one in eight of Latent's new subscribers.", s: ["Accuracy", "Precision", "Recall"] },
+  { t: "Classification", d: "Predicting which category a record belongs to. One of Snowflake's SQL-based ML Functions.", l: "Predicting whether a new subscriber will stay or cancel in their first year.", s: ["ML Functions", "Label"] },
+  { t: "Confusion matrix", d: "A table of a classification model's predictions against the actual outcomes, showing the counts it got right and wrong in each direction.", l: "How many subscribers the churn model predicted would leave and did, predicted would leave but stayed, and so on.", s: ["Precision", "Recall"] },
+  { t: "Cortex AI functions", d: "Snowflake functions, called from SQL, that work with text, documents, and images using large pre-trained models.", l: "Summarizing what viewers say about a film on social media.", s: ["Artificial intelligence"] },
+  { t: "Data leakage", d: "When a model's features include information that wouldn't be available at the moment the prediction is made. The model looks excellent in testing and then fails in use.", l: "Training the churn model on viewing from the weeks just before a cancellation, which Latent can't know when it needs to act.", s: ["Feature", "Feature engineering"] },
+  { t: "Drift", d: "A gradual change in data or behavior that makes a model's predictions less accurate over time.", l: "If Latent changes its pricing, the patterns behind cancellations may shift, and the churn model's predictions get worse.", s: ["Monitoring", "Retraining"] },
+  { t: "Evaluation", d: "Testing a model on data it didn't train on, to see whether its predictions hold up before anyone relies on them.", l: "Checking the churn model's predictions against subscribers whose outcomes are already known but were held back from training.", s: ["Held-out data"] },
+  { t: "Feature", d: "An input a model learns from.", l: "A subscriber's plan type, or how many films they watched in their first 30 days.", s: ["Feature engineering", "Label"] },
+  { t: "Feature engineering", d: "Turning raw data into features a model can learn from.", l: "Counting each subscriber's views in their first 30 days from the <code>viewing_events</code> table.", s: ["Feature"] },
+  { t: "Feature importance", d: "A measure of how much each feature influenced a model's predictions.", l: "Seeing that first-month viewing matters more to the churn model than a subscriber's country.", s: ["Feature"] },
+  { t: "Forecasting", d: "Predicting future values of a metric from its past values. One of Snowflake's SQL-based ML Functions.", l: "Predicting how many views Latent will have each day next month.", s: ["Time series", "ML Functions"] },
+  { t: "Gradient boosting", d: "A machine learning method that builds many small decision trees, each one correcting the mistakes of the ones before it.", l: "The method Snowflake's Classification function uses to train the churn model.", s: ["Classification"] },
+  { t: "Held-out data", aka: "test data", d: "Data deliberately kept out of training so a model can be evaluated on cases it hasn't seen.", l: "A share of Latent's past subscribers that Snowflake sets aside when training the churn model.", s: ["Evaluation"] },
+  { t: "Inference", aka: "prediction", d: "Using a trained model to make predictions about new cases. In Snowflake, usually called prediction.", l: "Scoring this year's new subscribers with the churn model.", s: ["Training"] },
+  { t: "Label", aka: "target", d: "The outcome a model learns to predict. In training data, it's already known.", l: "Whether a subscriber cancelled in their first year: <code>churned</code> or <code>stayed</code>.", s: ["Feature", "Supervised learning"] },
+  { t: "Machine learning", aka: "ML", d: "Building models that learn patterns from past data and apply them to new cases, instead of following rules someone wrote. It's part of the broader field of AI.", l: "Moving from describing which subscribers left to predicting which ones will.", s: ["Artificial intelligence", "Model", "Statistics"] },
+  { t: "Machine learning lifecycle", d: "The cycle machine learning work follows: prepare the data, engineer features, train, evaluate, register, deploy, and monitor. When performance drifts, it starts again.", l: "Latent's churn model will go through every stage of the cycle during this course.", s: ["Drift"] },
+  { t: "MAE", aka: "mean absolute error", d: "For a forecast, the average size of the error, in the same units as the thing being forecast.", l: "If the daily viewing forecast has an MAE of 10, it's off by about 10 views a day on average.", s: ["MAPE", "Forecasting"] },
+  { t: "MAPE", aka: "mean absolute percentage error", d: "For a forecast, the average size of the error as a percentage of the actual values.", l: "A MAPE of 8% means the daily viewing forecast is off by about 8% on average.", s: ["MAE", "Forecasting"] },
+  { t: "ML Functions", aka: "SQL-based ML Functions", d: "Snowflake functions that build and use machine learning models directly from SQL. There are four: Forecasting, Anomaly Detection, Classification, and Top Insights.", l: "Building Latent's viewing forecast and churn model without writing any Python.", s: ["Forecasting", "Anomaly detection", "Classification", "Top Insights"] },
+  { t: "Model", d: "What training produces. It captures the patterns found in past data, so it can make predictions about new cases.", l: "Latent's churn model, which predicts whether a new subscriber will leave in their first year.", s: ["Training", "Inference"] },
+  { t: "Model Registry", d: "The place in Snowflake where trained models are saved as named, versioned assets, so they can be governed, deployed, and compared. Models built with SQL-based ML Functions don't appear in it.", l: "Keeping every version of a custom churn model, so Latent can compare versions or roll back.", s: ["Versioning"] },
+  { t: "Monitoring", d: "Watching a model's performance after it's in use, to catch drift or other problems.", l: "Comparing the churn model's predictions with who actually cancelled, once their first year has passed.", s: ["Drift"] },
+  { t: "Precision", d: "Of the cases a model flagged, the share that were actually positive.", l: "Of the subscribers the churn model flagged, how many actually left. Low precision means retention offers go to people who would have stayed anyway.", s: ["Recall", "Confusion matrix"] },
+  { t: "Prediction interval", d: "A range around a forecast that the actual value is expected to fall inside, with a stated probability, such as 95%.", l: "A forecast of 150 views for a day, with a range of 120 to 180.", s: ["Forecasting"] },
+  { t: "Production AI", d: "A machine learning or AI system that runs reliably, securely, and at scale inside real applications: deployed and integrated, automated and repeatable, governed and observable.", l: "A churn model that scores new subscribers automatically every month, with every prediction traceable.", s: ["Monitoring"] },
+  { t: "Recall", d: "Of all the actual positive cases, the share a model caught.", l: "Of the subscribers who actually left, how many the churn model flagged. Low recall means at-risk subscribers slip through.", s: ["Precision", "Confusion matrix"] },
+  { t: "Retraining", d: "Training a model again on newer data, so it reflects current patterns.", l: "Rebuilding the churn model each month as new outcomes become known.", s: ["Drift", "Task"] },
+  { t: "Snowflake ML", d: "Snowflake's built-in toolkit for machine learning on governed data, from SQL-based ML Functions to Python libraries for building, deploying, and managing custom models.", l: "Everything Latent uses in this course to build models where its data already lives.", s: ["ML Functions", "Snowflake ML Python APIs"] },
+  { t: "Snowflake ML Python APIs", d: "The Python library (<code>snowflake-ml-python</code>) for building, training, registering, and managing models in Snowflake. It also gives Python access to Cortex AI functions.", l: "Training a custom churn model and registering it in the Model Registry.", s: ["Model Registry", "Snowflake Python APIs"] },
+  { t: "Snowflake Python APIs", d: "The Python library (<code>snowflake.core</code>) for managing Snowflake objects, such as warehouses, databases, and schemas.", l: "Creating the schema where Latent's registered models will live.", s: ["Snowpark"] },
+  { t: "Snowpark", d: "A Python library for querying and transforming data in Snowflake. Its operations map closely onto SQL, and the code runs inside Snowflake, not on your computer.", l: "Counting views per film with Python that reads like a <code>GROUP BY</code> query.", s: ["Snowflake Python APIs"] },
+  { t: "Statistics", d: "Describing data: summarizing it, measuring relationships, and telling you what happened. Much of the math behind machine learning comes from statistics.", l: "Every dashboard Latent's teams rely on today.", s: ["Machine learning"] },
+  { t: "Supervised learning", d: "Training a model on examples that include the label, so it learns to predict that label.", l: "The churn model learns from past subscribers whose outcomes are known.", s: ["Label", "Unsupervised learning"] },
+  { t: "Task", d: "A Snowflake object that runs SQL on a schedule.", l: "A task that retrains the churn model and scores new subscribers on the first of every month.", s: ["Retraining"] },
+  { t: "Time series", d: "A sequence of measurements taken at regular intervals.", l: "The number of views on Latent each day.", s: ["Forecasting"] },
+  { t: "Top Insights", d: "Finding the factors that most affect a metric. One of Snowflake's SQL-based ML Functions.", l: "Seeing which countries or acquisition channels drive a change in viewing.", s: ["ML Functions"] },
+  { t: "Training", d: "Fitting a model to past examples so it learns the patterns that came before an outcome.", l: "Fitting the churn model to subscribers who joined before 2024, whose first-year outcomes are known.", s: ["Model", "Inference"] },
+  { t: "Unsupervised learning", d: "Finding patterns in data that has no label, such as natural groupings.", l: "Grouping subscribers by viewing habits without deciding the groups in advance.", s: ["Supervised learning"] },
+  { t: "Versioning", d: "Keeping each trained model as a separate, numbered version, so versions can be compared and a previous one restored. SQL-based ML Functions don't keep versions: retraining replaces the model.", l: "Comparing this month's churn model with last month's before switching to it.", s: ["Model Registry"] }
+];
+
+function slug(t) { return "term-" + t.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, ""); }
+var known = {}; TERMS.forEach(function (x) { known[x.t] = true; });
+
+function render() {
+  var list = document.getElementById("list");
+  var groups = {};
+  TERMS.slice().sort(function (a, b) { return a.t.localeCompare(b.t); }).forEach(function (x) {
+    var L = x.t[0].toUpperCase();
+    (groups[L] = groups[L] || []).push(x);
+  });
+  var letters = Object.keys(groups).sort();
+  var html = "", nav = "";
+  letters.forEach(function (L) {
+    nav += '<a href="#letter-' + L + '">' + L + "</a>";
+    html += '<section class="group" id="letter-' + L + '" data-letter="' + L + '"><h2>' + L + "</h2><dl>";
+    groups[L].forEach(function (x) {
+      var see = (x.s || []).filter(function (n) { return known[n]; }).map(function (n) {
+        return '<a href="#' + slug(n) + '">' + n + "</a>";
+      }).join(", ");
+      var text = (x.t + " " + (x.aka || "") + " " + x.d + " " + x.l).replace(/<[^>]+>/g, "").toLowerCase();
+      html += '<div class="term" id="' + slug(x.t) + '" data-text="' + text.replace(/"/g, "&quot;") + '">' +
+        "<dt>" + x.t + (x.aka ? '<span class="aka">' + x.aka + "</span>" : "") + "</dt>" +
+        "<dd><p>" + x.d + "</p>" +
+        '<p class="latent"><b>At Latent:</b> ' + x.l + "</p>" +
+        (see ? '<p class="see">See also: ' + see + "</p>" : "") +
+        "</dd></div>";
+    });
+    html += "</dl></section>";
+  });
+  list.innerHTML = html;
+  document.getElementById("letters").innerHTML = nav;
+  setCount(TERMS.length, false);
+}
+
+function setCount(n, filtered) {
+  document.getElementById("count").textContent = filtered ? n + (n === 1 ? " term matches" : " terms match") : TERMS.length + " terms";
+}
+
+function filter() {
+  var q = document.getElementById("q").value.trim().toLowerCase();
+  var shown = 0;
+  document.querySelectorAll(".term").forEach(function (el) {
+    var hit = !q || el.getAttribute("data-text").indexOf(q) !== -1;
+    el.style.display = hit ? "" : "none";
+    if (hit) shown++;
+  });
+  document.querySelectorAll("section.group").forEach(function (g) {
+    var any = Array.prototype.some.call(g.querySelectorAll(".term"), function (el) { return el.style.display !== "none"; });
+    g.style.display = any ? "" : "none";
+  });
+  document.getElementById("empty").style.display = shown ? "none" : "block";
+  setCount(shown, !!q);
+}
+
+render();
+document.getElementById("q").addEventListener("input", filter);
+</script>
+</body>
+</html>
