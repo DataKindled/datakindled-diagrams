@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Course Glossary card · Applied ML on Snowflake</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: transparent; }
+  body { padding: 4px 2px 8px; font-family: Inter, system-ui, sans-serif; color: #1A1A1A; }
+  .card { max-width: 720px; margin: 0 auto; background: #FFFFFF; border: 1px solid #E8E4DC; border-left: 3px solid #C1440E;
+          border-radius: 8px; padding: 20px 22px; display: flex; gap: 18px; align-items: center; }
+  .icon { flex: 0 0 auto; width: 44px; height: 44px; }
+  .text { flex: 1 1 auto; min-width: 0; }
+  .eyebrow { margin: 0 0 2px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: #888780; }
+  h2 { margin: 0 0 4px; font-family: "Playfair Display", Georgia, serif; font-weight: 400; font-size: 22px; line-height: 1.2; }
+  p.desc { margin: 0; font-size: 14.5px; line-height: 1.5; color: #4A4A48; }
+  a.btn { flex: 0 0 auto; display: inline-block; background: #1A1A1A; color: #FAFAF8; text-decoration: none;
+          font-size: 14px; font-weight: 500; padding: 11px 18px; border-radius: 6px; white-space: nowrap; }
+  a.btn:hover, a.btn:focus-visible { background: #C1440E; }
+  a.btn:focus-visible { outline: 2px solid #1A1A1A; outline-offset: 2px; }
+  @media (max-width: 560px) {
+    .card { flex-wrap: wrap; padding: 18px; gap: 14px; }
+    .icon { width: 36px; height: 36px; }
+    .text { flex-basis: calc(100% - 52px); }
+    a.btn { width: 100%; text-align: center; }
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <svg class="icon" viewBox="0 0 44 44" fill="none" stroke="#1A1A1A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M8 9.5c4-1.8 9-1.8 14 1v24c-5-2.8-10-2.8-14-1z"/>
+      <path d="M36 9.5c-4-1.8-9-1.8-14 1v24c5-2.8 10-2.8 14-1z"/>
+      <path d="M12 16c2.5-.6 5-.4 7 .6M12 21c2.5-.6 5-.4 7 .6M25 16.6c2-1 4.5-1.2 7-.6M25 21.6c2-1 4.5-1.2 7-.6"/>
+    </svg>
+    <div class="text">
+      <p class="eyebrow">Reference</p>
+      <h2>Course Glossary</h2>
+      <p class="desc">Every term in the course, in plain language, with an example from Latent.</p>
+    </div>
+    <a class="btn" href="https://datakindled.github.io/datakindled-diagrams/applied-ml-on-snowflake-diagrams/glossary.html" target="_blank" rel="noopener">Open the glossary &rarr;</a>
+  </div>
+</body>
+</html>
