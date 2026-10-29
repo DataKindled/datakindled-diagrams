@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Churn training columns · Applied ML on Snowflake · DataKindled</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; padding: 16px; background: #FAFAF8; font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: #1A1A1A; }
+  .dk-roles { max-width: 720px; margin: 0 auto; }
+  .dk-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  table { width: 100%; min-width: 480px; border-collapse: separate; border-spacing: 0; table-layout: fixed; background: #FFFFFF; border: 1px solid #E8E4DC; border-radius: 10px; overflow: hidden; }
+  th, td { padding: 14px 16px; text-align: left; vertical-align: top; font-size: 14.5px; line-height: 1.5; border-bottom: 1px solid #E8E4DC; }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: none; }
+  thead th { background: #1A1A1A; color: #FAFAF8; border-bottom: none; font-family: "Playfair Display", Georgia, "Times New Roman", serif; font-size: 17px; font-weight: 400; line-height: 1.25; }
+  tbody th { background: #FAFAF8; border-right: 1px solid #E8E4DC; font-weight: 400; }
+  .dk-role { display: inline-block; font-size: 12px; font-weight: 500; letter-spacing: 0.02em; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
+  .dk-feature { background: #FFFFFF; color: #1A1A1A; border: 1px solid #1A1A1A; }
+  .dk-label { background: #C1440E; color: #FAFAF8; border: 1px solid #C1440E; }
+  .dk-excluded { background: #FAFAF8; color: #888780; border: 1px dashed #888780; }
+  .dk-sub { display: block; margin-top: 6px; font-size: 12px; color: #888780; line-height: 1.35; }
+  tr.dk-label-row td { background: #FAECE7; }
+  tr.dk-label-row th { background: #FAECE7; }
+  tr.dk-excluded-row td { color: #888780; }
+  tr.dk-excluded-row code { color: #888780; }
+  .dk-cols code { display: inline-block; margin: 0 4px 6px 0; }
+  code { font-family: "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace; font-size: 12.5px; background: #FAFAF8; border: 1px solid #E8E4DC; border-radius: 4px; padding: 1px 5px; }
+  tr.dk-label-row code { background: #FFFFFF; }
+  @media (max-width: 640px) {
+    th, td { padding: 11px 11px; font-size: 13.5px; }
+    thead th { font-size: 15.5px; }
+    col.dk-c1 { width: 104px !important; }
+  }
+</style>
+</head>
+<body>
+<div class="dk-roles">
+  <div class="dk-scroll">
+    <table>
+      <colgroup><col class="dk-c1" style="width:132px"><col><col style="width:38%"></colgroup>
+      <thead>
+        <tr>
+          <th>Role</th>
+          <th>Columns</th>
+          <th>Why</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th><span class="dk-role dk-feature">Feature</span><span class="dk-sub">From the subscriber's record</span></th>
+          <td class="dk-cols"><code>plan_type</code> <code>acquisition_channel</code> <code>country</code></td>
+          <td>Known from the day a subscriber joins.</td>
+        </tr>
+        <tr>
+          <th><span class="dk-role dk-feature">Feature</span><span class="dk-sub">Engineered in SQL</span></th>
+          <td class="dk-cols"><code>views_first_30_days</code> <code>films_first_30_days</code> <code>hours_first_30_days</code> <code>days_since_last_view</code></td>
+          <td>Built from viewing in the first 30 days, all Latent knows on day 30.</td>
+        </tr>
+        <tr class="dk-label-row">
+          <th><span class="dk-role dk-label">Label</span></th>
+          <td class="dk-cols"><code>first_year_outcome</code></td>
+          <td>What the model learns to predict: <code>churned</code> or <code>stayed</code>. Snowflake calls it the target.</td>
+        </tr>
+        <tr class="dk-excluded-row">
+          <th><span class="dk-role dk-excluded">Excluded</span></th>
+          <td class="dk-cols"><code>subscriber_id</code></td>
+          <td>An identifier, not behavior. The model would memorize subscribers instead of learning patterns.</td>
+        </tr>
+        <tr class="dk-excluded-row">
+          <th><span class="dk-role dk-excluded">Excluded</span></th>
+          <td class="dk-cols"><code>subscription_start_date</code> <code>churn_date</code></td>
+          <td>They define the prediction window and the label, not subscriber behavior.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>
