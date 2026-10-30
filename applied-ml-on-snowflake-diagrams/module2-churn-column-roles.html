@@ -9,8 +9,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
 <style>
   * { box-sizing: border-box; }
-  body { margin: 0; padding: 16px; background: #FAFAF8; font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: #1A1A1A; }
-  .dk-roles { max-width: 720px; margin: 0 auto; }
+  html, body { background: transparent; }
+  body { margin: 0; padding: 2px 2px 6px; font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: #1A1A1A; }
+  .dk-roles { max-width: none; margin: 0; }
   .dk-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   table { width: 100%; min-width: 480px; border-collapse: separate; border-spacing: 0; table-layout: fixed; background: #FFFFFF; border: 1px solid #E8E4DC; border-radius: 10px; overflow: hidden; }
   th, td { padding: 14px 16px; text-align: left; vertical-align: top; font-size: 14.5px; line-height: 1.5; border-bottom: 1px solid #E8E4DC; }
@@ -29,10 +30,13 @@
   .dk-cols code { display: inline-block; margin: 0 4px 6px 0; }
   code { font-family: "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace; font-size: 12.5px; background: #FAFAF8; border: 1px solid #E8E4DC; border-radius: 4px; padding: 1px 5px; }
   tr.dk-label-row code { background: #FFFFFF; }
-  @media (max-width: 640px) {
+  @media (max-width: 920px) {
     th, td { padding: 11px 11px; font-size: 13.5px; }
     thead th { font-size: 15.5px; }
-    col.dk-c1 { width: 104px !important; }
+    col.dk-c1 { width: 112px !important; }
+    table { min-width: 0; }
+    col.dk-c3, th:nth-child(3), td:nth-child(3) { display: none; }
+    .dk-cols code { font-size: 11.5px; }
   }
 </style>
 </head>
@@ -40,7 +44,7 @@
 <div class="dk-roles">
   <div class="dk-scroll">
     <table>
-      <colgroup><col class="dk-c1" style="width:132px"><col><col style="width:38%"></colgroup>
+      <colgroup><col class="dk-c1" style="width:132px"><col><col class="dk-c3" style="width:38%"></colgroup>
       <thead>
         <tr>
           <th>Role</th>
