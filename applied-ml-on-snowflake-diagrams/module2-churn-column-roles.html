@@ -82,5 +82,16 @@
     </table>
   </div>
 </div>
+<script>
+  // Tells the lesson page this asset's height, so the embed can size its frame to fit.
+  (function () {
+    function send() {
+      var h = Math.ceil(document.body.getBoundingClientRect().height) + 8;
+      parent.postMessage({ dkFrame: "module2-churn-column-roles", dkHeight: h }, "*");
+    }
+    window.addEventListener("load", send);
+    window.addEventListener("resize", send);
+  })();
+</script>
 </body>
 </html>
