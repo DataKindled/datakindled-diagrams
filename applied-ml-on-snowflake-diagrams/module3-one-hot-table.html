@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>One-hot encoding · Applied ML on Snowflake · DataKindled</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { background: transparent; }
+  body { margin: 0; padding: 2px 2px 6px; font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: #1A1A1A; }
+  table { width: auto; min-width: 0; border-collapse: separate; border-spacing: 0; table-layout: fixed; background: #FFFFFF; border: 1px solid #E8E4DC; border-radius: 10px; overflow: hidden; }
+  th, td { padding: 13px 16px; text-align: left; vertical-align: top; font-size: 14.5px; line-height: 1.5; border-bottom: 1px solid #E8E4DC; }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: none; }
+  thead th { background: #1A1A1A; color: #FAFAF8; border-bottom: none; font-family: "Playfair Display", Georgia, "Times New Roman", serif; font-size: 17px; font-weight: 400; line-height: 1.25; }
+  tbody th { font-weight: 500; background: #FAFAF8; border-right: 1px solid #E8E4DC; }
+  .dk-num { display: inline-block; min-width: 1.4em; color: #888780; font-weight: 500; }
+  td.dk-mod { white-space: nowrap; color: #888780; }
+  tr.dk-now th, tr.dk-now td { background: #FAECE7; }
+  tr.dk-now th, tr.dk-now td.dk-mod, tr.dk-now .dk-num { color: #C1440E; }
+  tr.dk-now td.dk-mod { font-weight: 500; }
+  .dk-sub { display: none; }
+  td code { font-family: "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace; font-size: 13px; background: #FAFAF8; border: 1px solid #E8E4DC; border-radius: 4px; padding: 1px 5px; white-space: nowrap; }
+  @media (max-width: 640px) { td code { white-space: normal; overflow-wrap: anywhere; font-size: 12px; } }
+  @media (max-width: 640px) {
+    th, td { padding: 10px 10px; font-size: 13.5px; }
+    thead th { font-size: 15px; }
+    col.dk-c1 { width: 128px !important; }
+    col.dk-c2, th.dk-where, td.dk-mod { display: none; }
+    .dk-sub { display: block; margin-top: 2px; font-size: 12px; font-weight: 400; color: #888780; padding-left: 1.4em; }
+    tr.dk-now .dk-sub { color: #C1440E; }
+    .dk-num { min-width: 1.4em; }
+  }
+  .dk-arrow { color: #888780; text-align: center; padding-left: 4px; padding-right: 4px; }
+  td.dk-num1 { color: #C1440E; font-weight: 500; }
+  td.dk-c, th.dk-c { text-align: center; }
+  th code, td code { font-size: 13px; }
+  thead th code { background: transparent; border: 0; color: #FAFAF8; padding: 0; font-size: 14px; }
+  @media (max-width: 480px) { th, td { padding: 9px 7px !important; font-size: 12.5px !important; } thead th code { font-size: 11px !important; } .dk-arrow { padding: 0 2px !important; } }
+</style>
+</head>
+<body>
+<table>
+  <thead>
+    <tr><th><code>PLAN_TYPE</code></th><th class="dk-arrow"></th><th class="dk-c"><code>PLAN_TYPE_annual</code></th><th class="dk-c"><code>PLAN_TYPE_monthly</code></th></tr>
+  </thead>
+  <tbody>
+    <tr><td>monthly</td><td class="dk-arrow">→</td><td class="dk-c">0</td><td class="dk-c dk-num1">1</td></tr>
+    <tr><td>annual</td><td class="dk-arrow">→</td><td class="dk-c dk-num1">1</td><td class="dk-c">0</td></tr>
+  </tbody>
+</table>
+<script>
+  // Tells the lesson page this table's height, so an embed that listens can size the frame to fit.
+  (function () {
+    function send() {
+      var h = Math.ceil(document.body.getBoundingClientRect().height) + 8;
+      parent.postMessage({ dkFrame: "module3-one-hot-table", dkHeight: h }, "*");
+    }
+    window.addEventListener("load", send);
+    window.addEventListener("resize", send);
+  })();
+</script>
+</body>
+</html>
