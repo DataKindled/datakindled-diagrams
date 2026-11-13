@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Where training fits · Applied ML on Snowflake · DataKindled</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { background: transparent; }
+  body { margin: 0; padding: 2px 2px 6px; font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: #1A1A1A; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; table-layout: fixed; background: #FFFFFF; border: 1px solid #E8E4DC; border-radius: 10px; overflow: hidden; }
+  th, td { padding: 13px 16px; text-align: left; vertical-align: top; font-size: 14.5px; line-height: 1.5; border-bottom: 1px solid #E8E4DC; }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: none; }
+  thead th { background: #1A1A1A; color: #FAFAF8; border-bottom: none; font-family: "Playfair Display", Georgia, "Times New Roman", serif; font-size: 17px; font-weight: 400; line-height: 1.25; }
+  tbody th { font-weight: 500; background: #FAFAF8; border-right: 1px solid #E8E4DC; }
+  .dk-num { display: inline-block; min-width: 1.4em; color: #888780; font-weight: 500; }
+  td.dk-mod { white-space: nowrap; color: #888780; }
+  tr.dk-now th, tr.dk-now td { background: #FAECE7; }
+  tr.dk-now th, tr.dk-now td.dk-mod, tr.dk-now .dk-num { color: #C1440E; }
+  tr.dk-now td.dk-mod { font-weight: 500; }
+  .dk-sub { display: none; }
+  @media (max-width: 640px) {
+    th, td { padding: 10px 10px; font-size: 13.5px; }
+    thead th { font-size: 15px; }
+    col.dk-c1 { width: 128px !important; }
+    col.dk-c2, th.dk-where, td.dk-mod { display: none; }
+    .dk-sub { display: block; margin-top: 2px; font-size: 12px; font-weight: 400; color: #888780; padding-left: 1.4em; }
+    tr.dk-now .dk-sub { color: #C1440E; }
+    .dk-num { min-width: 1.4em; }
+  }
+</style>
+</head>
+<body>
+<table>
+  <colgroup><col class="dk-c1" style="width:190px"><col class="dk-c2" style="width:120px"><col></colgroup>
+  <thead>
+    <tr><th>Lifecycle stage</th><th class="dk-where">Where</th><th>What you'll do</th></tr>
+  </thead>
+  <tbody>
+    <tr><th><span class="dk-num">1</span>Prepare data<span class="dk-sub">Module 3</span></th><td class="dk-mod">Module 3</td><td>Gather and prepare Latent's subscriber and viewing data from each subscriber's first 30 days.</td></tr>
+    <tr><th><span class="dk-num">2</span>Engineer features<span class="dk-sub">Module 3</span></th><td class="dk-mod">Module 3</td><td>Transform the raw data into model-ready features and labels.</td></tr>
+    <tr class="dk-now"><th><span class="dk-num">3</span>Train<span class="dk-sub">Module 4</span></th><td class="dk-mod">Module 4</td><td>Train candidate models, handle class imbalance, and compare them with cross-validation to choose the churn model.</td></tr>
+    <tr class="dk-now"><th><span class="dk-num">4</span>Evaluate<span class="dk-sub">Module 4</span></th><td class="dk-mod">Module 4</td><td>Choose a decision threshold, measure the model on the held-out test set, and compare the results with the ML Function model from Module 2.</td></tr>
+    <tr><th><span class="dk-num">5</span>Register<span class="dk-sub">Module 5</span></th><td class="dk-mod">Module 5</td><td>Store, version, and manage the model in the Model Registry.</td></tr>
+    <tr><th><span class="dk-num">6</span>Deploy<span class="dk-sub">Module 5</span></th><td class="dk-mod">Module 5</td><td>Use the registered model to score new subscribers.</td></tr>
+    <tr><th><span class="dk-num">7</span>Monitor<span class="dk-sub">Module 5</span></th><td class="dk-mod">Module 5</td><td>Track model performance and monitor how predictions compare with real outcomes over time.</td></tr>
+  </tbody>
+</table>
+<script>
+  // Tells the lesson page this table's height, so an embed that listens can size the frame to fit.
+  (function () {
+    function send() {
+      var h = Math.ceil(document.body.getBoundingClientRect().height) + 8;
+      parent.postMessage({ dkFrame: "module4-lifecycle-table", dkHeight: h }, "*");
+    }
+    window.addEventListener("load", send);
+    window.addEventListener("resize", send);
+  })();
+</script>
+</body>
+</html>
