@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test set results · Applied ML on Snowflake · DataKindled</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { background: transparent; }
+  body { margin: 0; padding: 2px 2px 6px; font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: #1A1A1A; }
+  .dk-wrap { display: flex; gap: 20px; align-items: flex-start; }
+  .dk-wrap > div { flex: 1 1 0; min-width: 0; }
+  .dk-cap { font-size: 13px; font-weight: 500; color: #888780; margin: 0 0 8px 2px; letter-spacing: 0.01em; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; table-layout: fixed; background: #FFFFFF; border: 1px solid #E8E4DC; border-radius: 10px; overflow: hidden; }
+  th, td { padding: 12px 14px; text-align: left; vertical-align: top; font-size: 14.5px; line-height: 1.45; border-bottom: 1px solid #E8E4DC; }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: none; }
+  thead th { background: #1A1A1A; color: #FAFAF8; border-bottom: none; font-family: "Playfair Display", Georgia, "Times New Roman", serif; font-size: 16.5px; font-weight: 400; line-height: 1.25; }
+  tbody th { font-weight: 500; background: #FAFAF8; border-right: 1px solid #E8E4DC; }
+  .dk-n { text-align: right; font-variant-numeric: tabular-nums; }
+  td.dk-test { font-weight: 500; color: #C1440E; }
+  td.dk-cv { color: #888780; }
+  td.dk-cell { font-variant-numeric: tabular-nums; font-size: 20px; font-weight: 500; }
+  td.dk-cell span { display: block; font-size: 12px; font-weight: 400; color: #888780; margin-top: 2px; }
+  td.dk-hit { background: #FAECE7; color: #C1440E; }
+  td.dk-hit span { color: #C1440E; }
+  @media (max-width: 720px) {
+    .dk-wrap { flex-direction: column; gap: 18px; }
+    .dk-wrap > div { width: 100%; }
+    th, td { padding: 10px 10px; font-size: 13.5px; }
+    thead th { font-size: 14.5px; }
+    td.dk-cell { font-size: 18px; }
+  }
+</style>
+</head>
+<body>
+<div class="dk-wrap">
+  <div>
+    <p class="dk-cap">Metrics: precision and recall at a threshold of 0.6</p>
+    <table>
+      <colgroup><col><col style="width:28%"><col style="width:34%"></colgroup>
+      <thead><tr><th>Metric</th><th class="dk-n">Test set</th><th class="dk-n">Cross-validation</th></tr></thead>
+      <tbody>
+        <tr><th>AUC</th><td class="dk-n dk-test">0.699</td><td class="dk-n dk-cv">0.739</td></tr>
+        <tr><th>Precision</th><td class="dk-n dk-test">0.295</td><td class="dk-n dk-cv">0.287</td></tr>
+        <tr><th>Recall</th><td class="dk-n dk-test">0.578</td><td class="dk-n dk-cv">0.552</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <p class="dk-cap">Confusion matrix, 333 test subscribers</p>
+    <table>
+      <colgroup><col style="width:38%"><col><col></colgroup>
+      <thead><tr><th></th><th>Flagged</th><th>Not flagged</th></tr></thead>
+      <tbody>
+        <tr><th>Actually churned</th><td class="dk-cell dk-hit">26<span>Churners caught</span></td><td class="dk-cell">19<span>Churners missed</span></td></tr>
+        <tr><th>Actually stayed</th><td class="dk-cell">62<span>False alarms</span></td><td class="dk-cell">226<span>Correctly not flagged</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<script>
+  // Tells the lesson page this asset's height, so an embed that listens can size the frame to fit.
+  (function () {
+    function send() {
+      var h = Math.ceil(document.body.getBoundingClientRect().height) + 8;
+      parent.postMessage({ dkFrame: "module4-test-results", dkHeight: h }, "*");
+    }
+    window.addEventListener("load", send);
+    window.addEventListener("resize", send);
+  })();
+</script>
+</body>
+</html>
