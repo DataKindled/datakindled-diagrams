@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Training and test sets · Applied ML on Snowflake · DataKindled</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { background: transparent; }
+  body { margin: 0; padding: 2px 2px 6px; font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: #1A1A1A; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; table-layout: fixed; background: #FFFFFF; border: 1px solid #E8E4DC; border-radius: 10px; overflow: hidden; }
+  th, td { padding: 13px 16px; text-align: left; vertical-align: top; font-size: 14.5px; line-height: 1.5; border-bottom: 1px solid #E8E4DC; }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: none; }
+  thead th { background: #1A1A1A; color: #FAFAF8; border-bottom: none; font-family: "Playfair Display", Georgia, "Times New Roman", serif; font-size: 17px; font-weight: 400; line-height: 1.25; }
+  tbody th { font-weight: 500; background: #FAFAF8; border-right: 1px solid #E8E4DC; }
+  td.dk-n, th.dk-n { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.dk-test th, tr.dk-test td { background: #FAECE7; }
+  tr.dk-test th, tr.dk-test td.dk-use { color: #C1440E; }
+  .dk-sub { display: block; margin-top: 2px; font-size: 12px; font-weight: 400; color: #888780; }
+  tr.dk-test .dk-sub { color: #C1440E; }
+  code { font-family: "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace; font-size: 12.5px; background: #FFFFFF; border: 1px solid #E8E4DC; border-radius: 4px; padding: 1px 5px; white-space: nowrap; }
+  td code { display: inline-block; margin: 0 4px 4px 0; }
+  @media (max-width: 640px) {
+    th, td { padding: 10px 9px; font-size: 13px; }
+    thead th { font-size: 14.5px; }
+    col.dk-c1 { width: 110px !important; }
+    col.dk-c2, th.dk-vars, td.dk-vars { display: none; }
+    col.dk-c1 { width: 96px !important; }
+    col.dk-n3 { width: 78px !important; }
+    col.dk-n4 { width: 64px !important; }
+    thead th { font-size: 13.5px; }
+    .dk-hide-s { display: none; }
+  }
+  .dk-vars-s { display: none; }
+  @media (max-width: 640px) { .dk-vars-s { display: block; margin-top: 6px; } .dk-vars-s code { font-size: 11px; margin: 0 3px 3px 0; display: inline-block; } }
+</style>
+</head>
+<body>
+<table>
+  <colgroup><col class="dk-c1" style="width:150px"><col class="dk-c2" style="width:200px"><col class="dk-n dk-n3" style="width:120px"><col class="dk-n dk-n4" style="width:100px"><col></colgroup>
+  <thead>
+    <tr><th>Set</th><th class="dk-vars">Variables</th><th class="dk-n">Subscribers</th><th class="dk-n">Churned</th><th>Used for</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Training set<span class="dk-sub">80%</span><span class="dk-vars-s"><code>X_train</code><code>y_train</code></span></th>
+      <td class="dk-vars"><code>X_train</code> <code>y_train</code></td>
+      <td class="dk-n">1,332</td><td class="dk-n">181</td>
+      <td class="dk-use">Training every model, fitting the preprocessing, and making every decision<span class="dk-hide-s">, from the algorithm to the threshold</span></td>
+    </tr>
+    <tr class="dk-test">
+      <th>Test set<span class="dk-sub">20%</span><span class="dk-vars-s"><code>X_test</code><code>y_test</code></span></th>
+      <td class="dk-vars"><code>X_test</code> <code>y_test</code></td>
+      <td class="dk-n">333</td><td class="dk-n">45</td>
+      <td class="dk-use">The final evaluation only<span class="dk-hide-s">, once every decision is made</span></td>
+    </tr>
+  </tbody>
+</table>
+<script>
+  // Tells the lesson page this table's height, so an embed that listens can size the frame to fit.
+  (function () {
+    function send() {
+      var h = Math.ceil(document.body.getBoundingClientRect().height) + 8;
+      parent.postMessage({ dkFrame: "module4-split-table", dkHeight: h }, "*");
+    }
+    window.addEventListener("load", send);
+    window.addEventListener("resize", send);
+  })();
+</script>
+</body>
+</html>
