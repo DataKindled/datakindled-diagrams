@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Early results · Applied ML on Snowflake · DataKindled</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { background: transparent; }
+  body { margin: 0; padding: 2px 2px 6px; font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: #1A1A1A; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; table-layout: fixed; background: #FFFFFF; border: 1px solid #E8E4DC; border-radius: 10px; overflow: hidden; }
+  th, td { padding: 13px 16px; text-align: left; vertical-align: top; font-size: 14.5px; line-height: 1.5; border-bottom: 1px solid #E8E4DC; }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: none; }
+  thead th { background: #1A1A1A; color: #FAFAF8; border-bottom: none; font-family: "Playfair Display", Georgia, "Times New Roman", serif; font-size: 17px; font-weight: 400; line-height: 1.25; }
+  tbody th { font-weight: 500; background: #FAFAF8; border-right: 1px solid #E8E4DC; }
+  td.dk-n, th.dk-n { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.dk-win th, tr.dk-win td { background: #FAECE7; }
+  tr.dk-win th, tr.dk-win td.dk-val { color: #C1440E; }
+  td.dk-val { font-weight: 500; }
+  td.dk-gap { color: #888780; }
+  .dk-sub { display: block; margin-top: 2px; font-size: 12px; font-weight: 400; color: #888780; }
+  tr.dk-win .dk-sub { color: #C1440E; }
+  code { font-family: "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace; font-size: 12.5px; background: #FFFFFF; border: 1px solid #E8E4DC; border-radius: 4px; padding: 1px 5px; white-space: nowrap; }
+  td code { display: inline-block; margin: 0 4px 4px 0; }
+  @media (max-width: 640px) {
+    th, td { padding: 10px 9px; font-size: 13px; }
+    thead th { font-size: 14.5px; }
+    col.dk-n { width: 19% !important; }
+    thead th { font-size: 13px; }
+  }
+  .dk-vars-s { display: none; }
+  @media (max-width: 640px) { .dk-vars-s { display: block; margin-top: 6px; } .dk-vars-s code { font-size: 11px; margin: 0 3px 3px 0; display: inline-block; } }
+  tr.dk-early th, tr.dk-early td { color: #888780; }
+  tr.dk-early th .dk-sub { color: #888780; }
+  @media (max-width: 640px) {
+    thead th { font-size: 12px; padding: 9px 6px; }
+    td, tbody th { padding: 9px 6px; font-size: 12.5px; }
+    .dk-sub { font-size: 11px; }
+  }
+</style>
+</head>
+<body>
+<table>
+  <colgroup><col><col class="dk-n" style="width:16%"><col class="dk-n" style="width:16%"><col class="dk-n" style="width:18%"><col class="dk-n" style="width:20%"></colgroup>
+  <thead>
+    <tr><th>Joined in 2024</th><th class="dk-n">Flagged</th><th class="dk-n">Subscribers</th><th class="dk-n">Churned so far</th><th class="dk-n">% churned so far</th></tr>
+  </thead>
+  <tbody>
+    <tr class="dk-win"><th>Jan&ndash;Jun<span class="dk-sub">Six months or more to show churn</span></th><td class="dk-n">Yes</td><td class="dk-n">37</td><td class="dk-n">7</td><td class="dk-n dk-val">18.9</td></tr>
+    <tr><th>Jan&ndash;Jun</th><td class="dk-n">No</td><td class="dk-n">103</td><td class="dk-n">10</td><td class="dk-n">9.7</td></tr>
+    <tr class="dk-early"><th>Jul&ndash;Dec<span class="dk-sub">Too early to tell</span></th><td class="dk-n">Yes</td><td class="dk-n">29</td><td class="dk-n">0</td><td class="dk-n">0.0</td></tr>
+    <tr class="dk-early"><th>Jul&ndash;Dec</th><td class="dk-n">No</td><td class="dk-n">96</td><td class="dk-n">5</td><td class="dk-n">5.2</td></tr>
+  </tbody>
+</table>
+<script>
+  // Tells the lesson page this table's height, so an embed that listens can size the frame to fit.
+  (function () {
+    function send() {
+      var h = Math.ceil(document.body.getBoundingClientRect().height) + 8;
+      parent.postMessage({ dkFrame: "module5-early-results-table", dkHeight: h }, "*");
+    }
+    window.addEventListener("load", send);
+    window.addEventListener("resize", send);
+  })();
+</script>
+</body>
+</html>
