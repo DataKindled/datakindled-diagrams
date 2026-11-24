@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baseline vs 2024 · Applied ML on Snowflake · DataKindled</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { background: transparent; }
+  body { margin: 0; padding: 2px 2px 6px; font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: #1A1A1A; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; table-layout: fixed; background: #FFFFFF; border: 1px solid #E8E4DC; border-radius: 10px; overflow: hidden; }
+  th, td { padding: 13px 16px; text-align: left; vertical-align: top; font-size: 14.5px; line-height: 1.5; border-bottom: 1px solid #E8E4DC; }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: none; }
+  thead th { background: #1A1A1A; color: #FAFAF8; border-bottom: none; font-family: "Playfair Display", Georgia, "Times New Roman", serif; font-size: 17px; font-weight: 400; line-height: 1.25; }
+  .dk-hsub { display: block; margin-top: 3px; font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 12px; color: #B4B2A9; }
+  tbody th { font-weight: 500; background: #FAFAF8; border-right: 1px solid #E8E4DC; }
+  td.dk-n, th.dk-n { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.dk-hl th, tr.dk-hl td { background: #FAECE7; }
+  tr.dk-hl th, tr.dk-hl td.dk-key { color: #C1440E; font-weight: 500; }
+  tr.dk-score td.dk-key { font-weight: 500; }
+  .dk-sub { display: block; margin-top: 2px; }
+  code { font-family: "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace; font-size: 11.5px; color: #888780; font-weight: 400; }
+  tr.dk-hl code { color: #C1440E; }
+  @media (max-width: 640px) {
+    th, td { padding: 10px 9px; font-size: 13px; }
+    thead th { font-size: 14px; }
+    .dk-hsub { font-size: 11px; }
+    col.dk-c1 { width: 128px !important; }
+    .dk-sub { display: none; }
+  }
+</style>
+</head>
+<body>
+<table>
+  <colgroup><col class="dk-c1" style="width:250px"><col><col><col></colgroup>
+  <thead>
+    <tr>
+      <th>Average</th>
+      <th class="dk-n">Baseline<span class="dk-hsub">Joined 2018–2023</span></th>
+      <th class="dk-n">2024<span class="dk-hsub">Prediction log</span></th>
+      <th class="dk-n">Change</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><th>Subscribers</th><td class="dk-n">1,665</td><td class="dk-n">265</td><td class="dk-n"></td></tr>
+    <tr class="dk-score"><th>Churn score<span class="dk-sub"><code>CHURN_SCORE</code></span></th><td class="dk-n">0.422</td><td class="dk-n">0.414</td><td class="dk-n dk-key">−0.008</td></tr>
+    <tr><th>Views<span class="dk-sub"><code>VIEWS_FIRST_30_DAYS</code></span></th><td class="dk-n">2.85</td><td class="dk-n">3.45</td><td class="dk-n">+0.60</td></tr>
+    <tr class="dk-hl"><th>Films watched<span class="dk-sub"><code>FILMS_FIRST_30_DAYS</code></span></th><td class="dk-n">2.30</td><td class="dk-n dk-key">3.18</td><td class="dk-n dk-key">+0.88</td></tr>
+    <tr><th>Hours<span class="dk-sub"><code>HOURS_FIRST_30_DAYS</code></span></th><td class="dk-n">4.05</td><td class="dk-n">4.68</td><td class="dk-n">+0.63</td></tr>
+    <tr><th>Days since last view<span class="dk-sub"><code>DAYS_SINCE_LAST_VIEW</code></span></th><td class="dk-n">13.03</td><td class="dk-n">12.28</td><td class="dk-n">−0.75</td></tr>
+  </tbody>
+</table>
+<script>
+  // Tells the lesson page this table's height, so an embed that listens can size the frame to fit.
+  (function () {
+    function send() {
+      var h = Math.ceil(document.body.getBoundingClientRect().height) + 8;
+      parent.postMessage({ dkFrame: "module6-drift-table", dkHeight: h }, "*");
+    }
+    window.addEventListener("load", send);
+    window.addEventListener("resize", send);
+  })();
+</script>
+</body>
+</html>
