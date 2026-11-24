@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test set by version · Applied ML on Snowflake · DataKindled</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Playfair+Display:wght@400&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { background: transparent; }
+  body { margin: 0; padding: 2px 2px 6px; font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; color: #1A1A1A; }
+  table { width: 100%; border-collapse: separate; border-spacing: 0; table-layout: fixed; background: #FFFFFF; border: 1px solid #E8E4DC; border-radius: 10px; overflow: hidden; }
+  th, td { padding: 13px 16px; text-align: left; vertical-align: top; font-size: 14.5px; line-height: 1.5; border-bottom: 1px solid #E8E4DC; }
+  tbody tr:last-child th, tbody tr:last-child td { border-bottom: none; }
+  thead th { background: #1A1A1A; color: #FAFAF8; border-bottom: none; font-family: "Playfair Display", Georgia, "Times New Roman", serif; font-size: 17px; font-weight: 400; line-height: 1.25; }
+  .dk-hsub { display: block; margin-top: 3px; font-family: Inter, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 12px; color: #B4B2A9; }
+  tbody th { font-weight: 500; background: #FAFAF8; border-right: 1px solid #E8E4DC; }
+  td.dk-n, th.dk-n { text-align: right; font-variant-numeric: tabular-nums; }
+  td.dk-win { background: #FAECE7; color: #C1440E; font-weight: 500; }
+  tr.dk-muted th, tr.dk-muted td { color: #888780; background: #FFFFFF; }
+  tr.dk-muted th { background: #FAFAF8; }
+  .dk-sub { display: block; margin-top: 2px; font-size: 12px; font-weight: 400; color: #888780; }
+  td.dk-win .dk-sub { color: #C1440E; }
+  code { font-family: "SFMono-Regular", Menlo, Consolas, "DejaVu Sans Mono", monospace; font-size: 13px; }
+  thead code { font-size: 15px; }
+  @media (max-width: 640px) { thead code { font-size: 12.5px; } }
+  @media (max-width: 640px) {
+    th, td { padding: 10px 9px; font-size: 13px; }
+    thead th { font-size: 14px; }
+    .dk-hsub { font-size: 11px; }
+    col.dk-c1 { width: 112px !important; }
+    .dk-hide-s { display: none; }
+  }
+</style>
+</head>
+<body>
+<table>
+  <colgroup><col class="dk-c1" style="width:230px"><col><col></colgroup>
+  <thead><tr><th>Version</th><th class="dk-n">Flagged<span class="dk-hsub">of 333</span></th><th class="dk-n">Churners caught<span class="dk-hsub">of 45</span></th></tr></thead>
+  <tbody>
+    <tr><th><code>V1</code><span class="dk-sub">At 0.6</span></th><td class="dk-n">88</td><td class="dk-n dk-win">26</td></tr>
+    <tr><th><code>V2</code><span class="dk-sub">At 0.6</span></th><td class="dk-n">71</td><td class="dk-n">17</td></tr>
+    <tr class="dk-muted"><th><code>V2</code><span class="dk-sub">At 0.55<span class="dk-hide-s">, to flag about as many</span></span></th><td class="dk-n">91</td><td class="dk-n">23</td></tr>
+  </tbody>
+</table>
+<script>
+  // Tells the lesson page this table's height, so an embed that listens can size the frame to fit.
+  (function () {
+    function send() {
+      var h = Math.ceil(document.body.getBoundingClientRect().height) + 8;
+      parent.postMessage({ dkFrame: "module6-test-set-table", dkHeight: h }, "*");
+    }
+    window.addEventListener("load", send);
+    window.addEventListener("resize", send);
+  })();
+</script>
+</body>
+</html>
